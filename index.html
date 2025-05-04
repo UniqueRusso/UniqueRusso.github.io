@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaccaria Harda | UX Designer Apprenticeship Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #6b46c1, #4299e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6b46c1;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold gradient-text">Zaccaria Harda</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-purple-700">Home</a>
+                    <a href="#about-gamma" class="nav-link text-gray-700 hover:text-purple-700">About Gamma</a>
+                    <a href="#why-ux" class="nav-link text-gray-700 hover:text-purple-700">Why UX?</a>
+                    <a href="#why-gamma" class="nav-link text-gray-700 hover:text-purple-700">Why Gamma?</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-purple-700">Projects</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-purple-700">Skills</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-purple-700">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-gray-700 hover:text-purple-700">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-gray-50">Home</a>
+                <a href="#about-gamma" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-gray-50">About Gamma</a>
+                <a href="#why-ux" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-gray-50">Why UX?</a>
+                <a href="#why-gamma" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-gray-50">Why Gamma?</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-gray-50">Projects</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-gray-50">Skills</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-gray-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-purple-50 to-blue-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in" style="animation-delay: 0.1s;">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        <span class="gradient-text">Designing with Purpose.</span><br>
+                        <span class="text-gray-800">Growing with Gamma.</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Hi, I'm Zaccaria Harda, an aspiring UX Designer currently studying BTEC Level 3 IT at Bolton Sixth Form College. I'm passionate about creating intuitive, accessible digital experiences that solve real problems.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="px-6 py-3 border border-purple-600 text-purple-600 font-medium rounded-lg hover:bg-purple-50 transition">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-purple-200 to-blue-200 flex items-center justify-center overflow-hidden shadow-lg">
+                            <!-- Placeholder for profile image -->
+                            <div class="text-6xl text-purple-600 font-bold">ZH</div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-lg shadow-md">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-medal text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600">Predicted Grades</p>
+                                    <p class="text-lg font-bold gradient-text">D*DD</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Gamma Section -->
+    <section id="about-gamma" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">About <span class="gradient-text">Gamma Labs</span></h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    I've researched Gamma's innovative approach to cloud communication and their commitment to nurturing early careers.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl card-hover">
+                    <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cloud Communication</h3>
+                    <p class="text-gray-600">
+                        Gamma is revolutionizing business communication through innovative cloud-based solutions, helping organizations connect more effectively.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl card-hover">
+                    <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Early Careers</h3>
+                    <p class="text-gray-600">
+                        Gamma invests in young talent through apprenticeships and graduate programs, providing hands-on experience and professional development.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl card-hover">
+                    <div class="w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Innovation Culture</h3>
+                    <p class="text-gray-600">
+                        With a focus on continuous improvement, Gamma fosters an environment where creative solutions and new ideas are valued and encouraged.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why UX Section -->
+    <section id="why-ux" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <div class="relative">
+                        <div class="w-full h-80 bg-gradient-to-r from-purple-100 to-blue-100 rounded-xl overflow-hidden">
+                            <!-- Placeholder for UX process image -->
+                            <div class="flex items-center justify-center h-full">
+                                <div class="text-center">
+                                    <i class="fas fa-users text-5xl text-purple-600 mb-4"></i>
+                                    <p class="text-lg font-medium text-gray-700">User-Centered Design Process</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-md w-40">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
+                                    <i class="fas fa-heart text-blue-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-medium text-gray-600">User Empathy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-bold mb-6">Why <span class="gradient-text">UX Design?</span></h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        UX design combines my passion for creativity with problem-solving. It's about understanding people, identifying their needs, and crafting solutions that are both functional and delightful.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
+                                    <i class="fas fa-search text-purple-600"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium text-gray-800">Research-Driven</h4>
+                                <p class="text-gray-600 mt-1">
+                                    I analyze user behavior to inform design decisions, as demonstrated by my work on Lantern.lol where I improved conversion rates by 30%.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                    <i class="fas fa-pencil-ruler text-blue-600"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium text-gray-800">Creative Problem Solving</h4>
+                                <p class="text-gray-600 mt-1">
+                                    My educational apps showcase my ability to transform complex concepts into intuitive interfaces that engage young learners.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
+                                    <i class="fas fa-universal-access text-indigo-600"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium text-gray-800">Accessibility Focus</h4>
+                                <p class="text-gray-600 mt-1">
+                                    I prioritize inclusive design to ensure digital products are usable by everyone, regardless of ability or circumstance.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Gamma Section -->
+    <section id="why-gamma" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Why <span class="gradient-text">Gamma?</span></h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Gamma's UX Apprenticeship perfectly aligns with my values and career aspirations.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center mr-6">
+                            <i class="fas fa-hands-helping text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Mentorship & Growth</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Gamma's structured apprenticeship program offers the perfect environment to develop my UX skills under expert guidance while contributing meaningfully to real projects.
+                    </p>
+                    <p class="text-gray-600">
+                        As someone who has successfully balanced school, work, and entrepreneurship, I thrive in environments that challenge me to grow.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mr-6">
+                            <i class="fas fa-project-diagram text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Impactful Work</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Gamma's focus on innovative communication solutions presents exciting opportunities to design experiences that genuinely improve how people and businesses connect.
+                    </p>
+                    <p class="text-gray-600">
+                        My experience building Lantern.lol from concept to £30k revenue demonstrates my ability to create products with real user impact.
+                    </p>
+                </div>
+            </div>
+            <div class="mt-12 bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-xl">
+                <div class="md:flex items-center">
+                    <div class="md:w-3/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-bold mb-2">Ready to contribute and grow with Gamma</h3>
+                        <p class="text-gray-600">
+                            I'm excited about the prospect of bringing my UX passion, entrepreneurial mindset, and technical skills to Gamma's innovative team.
+                        </p>
+                    </div>
+                    <div class="md:w-1/4 flex justify-center md:justify-end">
+                        <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition">
+                            Let's Connect
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">My <span class="gradient-text">Projects</span></h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    A selection of work that demonstrates my UX approach and technical capabilities.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-purple-100 to-blue-100 flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-5xl text-purple-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-rocket text-purple-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Lantern.lol</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Founded and designed this successful SaaS business, leading product direction and interface design. Analyzed user behavior to enhance experience, resulting in over £30,000 in revenue.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">UX Design</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">User Research</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full">Entrepreneurship</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-blue-100 to-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-5xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-graduation-cap text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Educational Apps</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Created engaging mobile applications using MIT App Inventor to help children learn mathematics through interactive, user-friendly interfaces.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">Mobile Design</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">EdTech</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-indigo-100 to-purple-100 flex items-center justify-center">
+                        <i class="fas fa-tshirt text-5xl text-indigo-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-paint-brush text-indigo-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Moneytality Streetwear</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Designed clothing and branding for my streetwear label, developing a cohesive visual identity and user experience across digital and physical touchpoints.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full">Branding</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-800 text-sm rounded-full">Visual Design</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-800 text-sm rounded-full">User Experience</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-purple-100 to-pink-100 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-5xl text-pink-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-code text-pink-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Web Development</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Developed responsive websites with a focus on user experience, accessibility, and clean design principles. Implemented HTML, CSS, and JavaScript to bring designs to life.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">JavaScript</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    The tools and methodologies I use to create exceptional user experiences.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- UX Skills -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user-circle text-purple-600"></i>
+                        </div>
+                        UX Design
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span>User Research</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span>Wireframing</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span>Prototyping</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span>Usability Testing</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span>Information Architecture</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical Skills -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-code text-blue-600"></i>
+                        </div>
+                        Technical
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-blue-600 text-sm"></i>
+                            </div>
+                            <span>Figma</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-blue-600 text-sm"></i>
+                            </div>
+                            <span>HTML/CSS</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-blue-600 text-sm"></i>
+                            </div>
+                            <span>MIT App Inventor</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-blue-600 text-sm"></i>
+                            </div>
+                            <span>Data Modeling</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-blue-600 text-sm"></i>
+                            </div>
+                            <span>Web Development</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills -->
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-comments text-indigo-600"></i>
+                        </div>
+                        Professional
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-indigo-600 text-sm"></i>
+                            </div>
+                            <span>Team Collaboration</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-indigo-600 text-sm"></i>
+                            </div>
+                            <span>Communication</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-indigo-600 text-sm"></i>
+                            </div>
+                            <span>Problem Solving</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-indigo-600 text-sm"></i>
+                            </div>
+                            <span>Time Management</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-indigo-600 text-sm"></i>
+                            </div>
+                            <span>Entrepreneurial Mindset</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div class="mt-12 bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-xl">
+                <h3 class="text-xl font-bold mb-6 text-center">Certifications</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4 mt-1">
+                            <i class="fas fa-shield-alt text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Cisco Introduction to Cybersecurity</h4>
+                            <p class="text-gray-600 text-sm">Understanding of cybersecurity principles and best practices</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-1">
+                            <i class="fas fa-user-secret text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Ethical Hacker (Advanced)</h4>
+                            <p class="text-gray-600 text-sm">Advanced knowledge of security vulnerabilities and protection methods</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    I'd love to discuss how I can contribute to Gamma's UX team. Feel free to reach out!
+                </p>
+            </div>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden md:flex">
+                <div class="md:w-1/2 bg-gradient-to-br from-purple-600 to-blue-600 p-12 text-white">
+                    <h3 class="text-2xl font-bold mb-6">Let's Connect</h3>
+                    <p class="mb-8">
+                        I'm excited about the opportunity to join Gamma Labs and contribute to your innovative projects. Whether you'd like to discuss my application, see more of my work, or just chat about UX design, I'd be happy to hear from you.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-white text-opacity-80">Email</p>
+                                <p>zaccaria.harda@example.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-white text-opacity-80">Location</p>
+                                <p>Bolton, UK</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-12">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="your.email@example.com">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="What's this about?">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:order-2 space-x-6 mb-8 md:mb-0">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </div>
+                <div class="md:order-1 text-center md:text-left">
+                    <p class="text-base text-gray-400">
+                        &copy; 2023 Zaccaria Harda. All rights reserved.
+                    </p>
+                    <p class="text-sm text-gray-500 mt-2">
+                        Designed with passion for UX and built with Tailwind CSS.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Add animation class to sections when they come into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
