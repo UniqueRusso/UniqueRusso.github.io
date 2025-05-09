@@ -223,6 +223,176 @@
                 left: -10px;
             }
         }
+
+        
+            :root {
+                --neon-green: #39ff14;
+                --neon-blue: #00f7ff;
+                --neon-purple: #bc13fe;
+                --dark-bg: #0a0a0a;
+            }
+            
+            body {
+                font-family: 'Space Grotesk', sans-serif;
+                background-color: var(--dark-bg);
+                color: white;
+                scroll-behavior: smooth;
+                overflow-x: hidden;
+            }
+            
+            .section {
+                min-height: 100vh;
+                padding: 5rem 1.5rem;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .neon-text {
+                text-shadow: 0 0 5px var(--neon-green), 0 0 10px rgba(57, 255, 20, 0.3);
+            }
+            
+            .neon-box {
+                border: 1px solid var(--neon-blue);
+                box-shadow: 0 0 15px rgba(0, 247, 255, 0.3), inset 0 0 10px rgba(0, 247, 255, 0.1);
+                background: rgba(10, 10, 10, 0.7);
+                backdrop-filter: blur(10px);
+                transition: all 0.3s ease;
+            }
+            
+            .neon-box:hover {
+                box-shadow: 0 0 25px rgba(0, 247, 255, 0.5), inset 0 0 15px rgba(0, 247, 255, 0.2);
+            }
+            
+            .glow-effect {
+                position: relative;
+            }
+            
+            .glow-effect::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: -1;
+                margin: -5px;
+                border-radius: inherit;
+                background: linear-gradient(45deg, var(--neon-green), var(--neon-blue), var(--neon-purple));
+                background-size: 400% 400%;
+                animation: gradientGlow 6s ease infinite;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+            
+            .glow-effect:hover::after {
+                opacity: 0.7;
+            }
+            
+            @keyframes gradientGlow {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            
+            .ripple-effect {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ripple-effect span {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.7);
+                transform: scale(0);
+                animation: ripple 600ms linear;
+                opacity: 0;
+            }
+            
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+           
+            
+            
+            
+            
+            
+            .skill-pill {
+                border: 1px solid var(--neon-purple);
+                box-shadow: 0 0 10px rgba(188, 19, 254, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .skill-pill:hover {
+                background: rgba(188, 19, 254, 0.1);
+                box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+                transform: translateY(-3px);
+            }
+            
+            .nav-dot {
+                width: 12px;
+                height: 12px;
+                background: rgba(255,255,255,0.2);
+                border-radius: 50%;
+                margin: 15px 0;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-dot.active {
+                background: var(--neon-green);
+                box-shadow: 0 0 10px var(--neon-green);
+                transform: scale(1.4);
+            }
+            
+            .scale-in {
+                animation: scaleIn 0.5s forwards;
+            }
+            
+            @keyframes scaleIn {
+                from { transform: scale(0.9); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+            
+            .fade-in {
+                animation: fadeIn 1s forwards;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            .slide-up {
+                animation: slideUp 0.8s forwards;
+            }
+            
+            @keyframes slideUp {
+                from { transform: translateY(50px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+            
+            .floating {
+                animation: floating 6s ease-in-out infinite;
+            }
+            
+            @keyframes floating {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-15px); }
+                100% { transform: translateY(0px); }
+            }
+            
+            .text-gradient {
+                background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+        
     </style>
 </head>
 <body class="dark:bg-gray-900 dark:text-white">
@@ -270,16 +440,15 @@
     
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="container mx-auto px-6 py-20 text-center relative z-10">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
-                <span class="text-neon-green glow">Zaccaria</span> Harda
+        <div class="max-w-6xl mx-auto text-center relative z-10 px-4">
+            <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold mb-6 fade-in" style="animation-delay: 0.3s;">
+                <span class="text-white">Zaccaria</span> <span class="text-gradient">Harda</span>
             </h1>
+            
             <div class="text-xl md:text-2xl mb-8">
                 <span class="typing-text" id="typingText"></span>
             </div>
-            <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-gray-300">
-                IT Student | SaaS Founder | Aspiring Cybersecurity Expert
-            </p>
+           
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#projects" class="px-8 py-3 bg-neon-green text-black font-bold rounded-full hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 glow-box">
                     Explore My Work
@@ -295,7 +464,7 @@
     </section>
     
   <!-- About Section -->
-<section id="about" class="py-20 bg-black bg-opacity-70 relative">
+<section id="about" class="py-20 bg-black relative">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow animate-fade-in">
         About <span class="text-white">Me</span>
@@ -303,43 +472,40 @@
   
       <div class="flex flex-col lg:flex-row items-center gap-12 animate-fade-in" style="animation-delay: 200ms;">
         <!-- Profile Image -->
-        <div class="relative scale-in">
-          <div class="w-full max-w-md mx-auto">
-            <div class="relative glow-effect rounded-full overflow-hidden">
-              <div class="absolute -inset-1 rounded-full bg-neon-green opacity-30 blur-md"></div>
-              <div class="relative aspect-square rounded-full overflow-hidden border-4 border-neon-green/30">
-                <img src="https://media.licdn.com/dms/image/v2/D4E03AQH2o9D76IunIw/profile-displayphoto-shrink_800_800/B4EZUeqYPDGwAc-/0/1739976181740?e=1752105600&v=beta&t=HXZiWeKnxnQQEG9Sdy1Vf0R3mvucXkDHqCaNriOZKkU" alt="Zaccaria Harda" class="w-full max-w-md mx-auto relative">
-              </div>
+        <div class="relative scale-in w-full max-w-md mx-auto">
+          <div class="relative glow-effect rounded-full overflow-hidden">
+            <div class="absolute -inset-1 rounded-full bg-neon-green opacity-30 blur-md"></div>
+            <div class="relative aspect-square rounded-full overflow-hidden border-4 border-neon-green/30">
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQH2o9D76IunIw/profile-displayphoto-shrink_800_800/B4EZUeqYPDGwAc-/0/1739976181740?e=1752105600&v=beta&t=HXZiWeKnxnQQEG9Sdy1Vf0R3mvucXkDHqCaNriOZKkU" alt="Zaccaria Harda headshot" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
   
         <!-- Text Content -->
         <div class="lg:w-1/2 animate-fade-in" style="animation-delay: 400ms;">
-          <h3 class="text-2xl font-bold mb-4 text-electric-blue">Tech-Savvy Student & Entrepreneur</h3>
-          <p class="text-gray-300 mb-6">
-            I'm a driven IT student with a passion for backend development, cybersecurity, and cloud technologies. 
-            Balancing academics, entrepreneurship, and personal growth, I've built a SaaS platform generating 
-            <span class="text-neon-green font-bold counter" data-target="30">0</span>K+ in revenue while maintaining 
-            excellence in my studies and fitness journey.
+          <h3 class="text-2xl font-bold mb-4 text-electric-blue">IT Student | SaaS Founder | Cybersecurity Aspirant</h3>
+          <p class="text-gray-300 mb-6 leading-relaxed">
+            I'm a motivated IT student passionate about backend development, cybersecurity, and cloud computing. 
+            I balance academics, entrepreneurship, and fitness — running a successful SaaS business that's generated over 
+            <span class="text-neon-green font-bold counter" data-target="30">0</span>K in revenue, while maintaining top performance in my studies.
           </p>
   
           <div class="grid grid-cols-2 gap-4 mb-8">
             <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-neon-green">
               <h4 class="font-bold text-lg text-white">Backend Development</h4>
-              <p class="text-gray-300">Building scalable systems and APIs</p>
+              <p class="text-gray-300 text-sm">Scalable systems & API architecture</p>
             </div>
             <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-electric-blue">
               <h4 class="font-bold text-lg text-white">Cybersecurity</h4>
-              <p class="text-gray-300">Threat analysis & ethical hacking</p>
+              <p class="text-gray-300 text-sm">Ethical hacking & threat detection</p>
             </div>
             <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-neon-green">
               <h4 class="font-bold text-lg text-white">Cloud Technologies</h4>
-              <p class="text-gray-300">Deploying and managing cloud infrastructure</p>
+              <p class="text-gray-300 text-sm">Infrastructure setup & scaling</p>
             </div>
             <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-electric-blue">
               <h4 class="font-bold text-lg text-white">Entrepreneurship</h4>
-              <p class="text-gray-300">Building and scaling SaaS products</p>
+              <p class="text-gray-300 text-sm">Creating & scaling SaaS products</p>
             </div>
           </div>
   
@@ -367,18 +533,21 @@
     document.addEventListener("DOMContentLoaded", () => {
       const counters = document.querySelectorAll('.counter');
       counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+  
         const updateCount = () => {
-          const target = +counter.getAttribute('data-target');
-          const count = +counter.innerText;
-          const increment = target / 200;
+          const increment = target / 100;
   
           if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
+            count += increment;
+            counter.innerText = Math.floor(count);
             requestAnimationFrame(updateCount);
           } else {
             counter.innerText = target;
           }
         };
+  
         updateCount();
       });
     });
@@ -394,8 +563,9 @@
       animation: fadeIn 1s ease-out forwards;
     }
   </style>
+  
 <!-- Fitness Section -->
-<section id="fitness" class="py-20 bg-gray-900 relative">
+<section id="fitness" class="py-20 bg-black -900 relative">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-electric-blue glow">
         Fitness <span class="text-white">Journey</span>
@@ -424,7 +594,7 @@
   
     
    <!-- Experience Section -->
-<section id="experience" class="py-20 bg-gray-900 relative">
+<section id="experience" class="py-20 bg-black -900 relative">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
         My <span class="text-white">Journey</span>
@@ -605,7 +775,7 @@
   
     
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-black bg-opacity-70 relative">
+    <section id="projects" class="py-20 bg-black  relative">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
                 My <span class="text-white">Projects</span>
@@ -679,7 +849,7 @@
     </section>
     
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-900 relative">
+    <section id="skills" class="py-20 bg-black -900 relative">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
                 Technical <span class="text-white">Skills</span>
@@ -826,7 +996,7 @@
     </section>
     
     <!-- Education Section -->
-    <section id="education" class="py-20 bg-black bg-opacity-70 relative">
+    <section id="education" class="py-20 bg-black  relative">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
                 My <span class="text-white">Education</span>
@@ -942,7 +1112,7 @@
     <div class="certification-card bg-gray-800 p-4 rounded-lg border border-gray-700">
         <div class="flex items-center mb-3">
             <div class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-2">
-                <i class="fab fa-ibm text-black"></i>
+                <i class="fas fa-shield-alt text-black"></i>
             </div>
             <h3 class="text-md font-bold text-white">IBM Cybersecurity Careers</h3>
         </div>
@@ -978,7 +1148,7 @@
     <div class="certification-card bg-gray-800 p-4 rounded-lg border border-gray-700">
         <div class="flex items-center mb-3">
             <div class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-2">
-                <i class="fab fa-coursera text-black"></i>
+                <i class="fas fa-shield-alt text-black"></i>
             </div>
             <h3 class="text-md font-bold text-white">Coursera Foundations of Cybersecurity</h3>
         </div>
@@ -993,34 +1163,6 @@
     </div>
 </div>
 
-    
-    <!-- Footer -->
-    <footer class="py-12 bg-gray-900 relative">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-neon-green glow">
-                Let's <span class="text-white">Connect</span>
-            </h2>
-            
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="https://www.linkedin.com/in/zaccariah/" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-neon-green hover:text-black transition-all duration-300 transform hover:scale-110">
-                    <i class="fab fa-linkedin-in text-xl"></i>
-                </a>
-               
-                </a>
-                <a href="mailto:hardazaccaria072@gmail.com" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-electric-blue hover:text-black transition-all duration-300 transform hover:scale-110">
-                    <i class="fas fa-envelope text-xl"></i>
-                </a>
-            </div>
-            
-            <p class="text-gray-400 mb-4">
-                <i class="fas fa-map-marker-alt mr-2"></i> Based in Manchester, UK
-            </p>
-            
-            <p class="text-gray-400">
-                &copy; 2025 Zaccaria Harda. All rights reserved.
-            </p>
-        </div>
-    </footer>
     
     <!-- Project Modals -->
     <div class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300" id="arithmeticModal">
