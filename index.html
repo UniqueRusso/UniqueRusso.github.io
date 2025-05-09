@@ -3,799 +3,821 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaccaria Harda | Tech Entrepreneur & Developer</title>
+    <title>Zaccaria Harda | IT Student & SaaS Founder</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-green: #39ff14;
-            --neon-blue: #00f7ff;
-            --neon-purple: #bc13fe;
-            --dark-bg: #0a0a0a;
+            --neon-green: #0afc0a;
+            --electric-blue: #00f5ff;
         }
         
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: var(--dark-bg);
-            color: white;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
         
-        .section {
-            min-height: 100vh;
-            padding: 5rem 1.5rem;
-            position: relative;
+        .text-neon-green {
+            color: var(--neon-green);
+        }
+        
+        .text-electric-blue {
+            color: var(--electric-blue);
+        }
+        
+        .bg-neon-green {
+            background-color: var(--neon-green);
+        }
+        
+        .bg-electric-blue {
+            background-color: var(--electric-blue);
+        }
+        
+        .border-neon-green {
+            border-color: var(--neon-green);
+        }
+        
+        .border-electric-blue {
+            border-color: var(--electric-blue);
+        }
+        
+        .glow {
+            text-shadow: 0 0 5px currentColor;
+        }
+        
+        .glow-box {
+            box-shadow: 0 0 10px currentColor;
+        }
+        
+        .typing-text::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
             overflow: hidden;
+            z-index: -1;
         }
         
-        .neon-text {
-            text-shadow: 0 0 5px var(--neon-green), 0 0 10px rgba(57, 255, 20, 0.3);
-        }
-        
-        .neon-box {
-            border: 1px solid var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3), inset 0 0 10px rgba(0, 247, 255, 0.1);
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .neon-box:hover {
-            box-shadow: 0 0 25px rgba(0, 247, 255, 0.5), inset 0 0 15px rgba(0, 247, 255, 0.2);
-        }
-        
-        .glow-effect {
-            position: relative;
-        }
-        
-        .glow-effect::after {
+        .matrix-bg::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            margin: -5px;
-            border-radius: inherit;
-            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue), var(--neon-purple));
-            background-size: 400% 400%;
-            animation: gradientGlow 6s ease infinite;
-            opacity: 0;
-            transition: opacity 0.3s;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,245,255,0.1) 0%, rgba(0,0,0,0.65) 70%);
+            z-index: 2;
         }
         
-        .glow-effect:hover::after {
-            opacity: 0.7;
+        .matrix-line {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--electric-blue));
+            animation: matrix-fall linear infinite;
         }
         
-        @keyframes gradientGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes matrix-fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(100vh); }
         }
         
-        .ripple-effect {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ripple-effect span {
+        .particle {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.7);
-            transform: scale(0);
-            animation: ripple 600ms linear;
-            opacity: 0;
+            background-color: var(--electric-blue);
+            opacity: 0.5;
+            animation: particle-float linear infinite;
         }
         
-        @keyframes ripple {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 50px;
-            margin-bottom: 50px;
+        @keyframes particle-float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 20px;
+            left: -30px;
             top: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--neon-blue), transparent);
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 40px;
-            height: 40px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background: var(--dark-bg);
-            border: 2px solid var(--neon-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border: 3px solid var(--electric-blue);
+            background-color: #0a0a0a;
             z-index: 1;
         }
         
-        .skill-pill {
-            border: 1px solid var(--neon-purple);
-            box-shadow: 0 0 10px rgba(188, 19, 254, 0.2);
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: var(--electric-blue);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .skill-badge {
             transition: all 0.3s ease;
         }
         
-        .skill-pill:hover {
-            background: rgba(188, 19, 254, 0.1);
-            box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
-            transform: translateY(-3px);
+        .skill-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
         }
         
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            margin: 15px 0;
-            cursor: pointer;
+        .project-card {
             transition: all 0.3s ease;
+            transform-style: preserve-3d;
         }
         
-        .nav-dot.active {
-            background: var(--neon-green);
-            box-shadow: 0 0 10px var(--neon-green);
-            transform: scale(1.4);
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.2);
         }
         
-        .scale-in {
-            animation: scaleIn 0.5s forwards;
+        .certification-card {
+            transition: all 0.3s ease;
+            perspective: 1000px;
         }
         
-        @keyframes scaleIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        .certification-card:hover {
+            transform: rotateY(10deg);
+            box-shadow: 0 5px 15px rgba(10, 252, 10, 0.3);
         }
         
-        .fade-in {
-            animation: fadeIn 1s forwards;
+        .nav-link {
+            position: relative;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--neon-green);
+            transition: width 0.3s ease;
         }
         
-        .slide-up {
-            animation: slideUp 0.8s forwards;
+        .nav-link:hover::after {
+            width: 100%;
         }
         
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .nav-link.active::after {
+            width: 100%;
         }
         
-        .floating {
-            animation: floating 6s ease-in-out infinite;
+        .counter {
+            transition: all 0.5s ease;
         }
         
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .modal {
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
         
-        .text-gradient {
-            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        
+        .modal-overlay {
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item::before {
+                left: -20px;
+            }
+            
+            .timeline-item::after {
+                left: -10px;
+            }
         }
     </style>
 </head>
-<body>
+<body class="dark:bg-gray-900 dark:text-white">
+    <!-- Matrix Background -->
+    <div class="matrix-bg" id="matrixBg"></div>
+    
     <!-- Floating Navigation -->
-    <div class="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 hidden md:flex flex-col">
-        <div class="nav-dot active" data-section="hero"></div>
-        <div class="nav-dot" data-section="about"></div>
-        <div class="nav-dot" data-section="experience"></div>
-        <div class="nav-dot" data-section="projects"></div>
-        <div class="nav-dot" data-section="skills"></div>
-        <div class="nav-dot" data-section="education"></div>
-        <div class="nav-dot" data-section="contact"></div>
-    </div>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-bold text-neon-green glow">ZH</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-neon-green">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-neon-green">About</a>
+                    <a href="#fitness" class="nav-link text-white hover:text-neon-green">Fitness</a>
+                    <a href="#experience" class="nav-link text-white hover:text-neon-green">Experience</a>
+                    <a href="#projects" class="nav-link text-white hover:text-neon-green">Projects</a>
+                    <a href="#skills" class="nav-link text-white hover:text-neon-green">Skills</a>
+                    <a href="#education" class="nav-link text-white hover:text-neon-green">Education</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="text-white hover:text-neon-green">
+                       
+                    </button>
+                    <button class="md:hidden text-white" id="mobileMenuButton">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-black bg-opacity-90 w-full" id="mobileMenu">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link text-white hover:text-neon-green">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-neon-green">About</a>
+                <a href="#fitness" class="nav-link text-white hover:text-neon-green">Fitness</a>
+                <a href="#experience" class="nav-link text-white hover:text-neon-green">Experience</a>
+                <a href="#projects" class="nav-link text-white hover:text-neon-green">Projects</a>
+                <a href="#skills" class="nav-link text-white hover:text-neon-green">Skills</a>
+                <a href="#education" class="nav-link text-white hover:text-neon-green">Education</a>
+            </div>
+        </div>
+    </nav>
     
     <!-- Hero Section -->
-    <section id="hero" class="section flex items-center justify-center relative">
-        <div class="absolute inset-0 z-0 opacity-20">
-            <div id="particles-js" class="absolute inset-0"></div>
-        </div>
-        
-        <div class="max-w-6xl mx-auto text-center relative z-10 px-4">
-            <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold mb-6 fade-in" style="animation-delay: 0.3s;">
-                <span class="text-white">Zaccaria</span> <span class="text-gradient">Harda</span>
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto px-6 py-20 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+                <span class="text-neon-green glow">Zaccaria</span> Harda
             </h1>
-            
-            <div class="relative inline-block mb-8 fade-in" style="animation-delay: 0.6s;">
-                <div class="text-xl sm:text-2xl md:text-3xl text-gray-300 font-medium inline-block">
-                    <span class="typing-text"></span>
-                </div>
-                <span class="cursor absolute -right-3 top-2 w-2 h-8 bg-neon-green rounded-full pulse"></span>
+            <div class="text-xl md:text-2xl mb-8">
+                <span class="typing-text" id="typingText"></span>
             </div>
-            
-            <p class="text-md sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 fade-in" style="animation-delay: 0.9s;">
-                Aspiring IT professional, cybersecurity enthusiast, and SaaS founder building the future of digital experiences.
+            <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-gray-300">
+                IT Student | SaaS Founder | Aspiring Cybersecurity Expert
             </p>
-            
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="#projects" class="relative glow-effect ripple-effect overflow-hidden px-8 py-4 border-2 border-neon-green text-neon-green font-bold rounded-full transition-all duration-300 slide-up" style="animation-delay: 1.2s;">
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#projects" class="px-8 py-3 bg-neon-green text-black font-bold rounded-full hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 glow-box">
                     Explore My Work
                 </a>
-                <a href="#contact" class="relative glow-effect ripple-effect overflow-hidden px-8 py-4 bg-neon-green text-black font-bold rounded-full hover:bg-opacity-90 transition-all duration-300 slide-up" style="animation-delay: 1.4s;">
-                    Get In Touch
+                <a href="https://limewire.com/d/oUHTs#hBEP0Vk44H" class="px-8 py-3 border-2 border-electric-blue text-white font-bold rounded-full hover:bg-electric-blue hover:bg-opacity-10 transition-all duration-300 transform hover:scale-105">
+                    Download CV
                 </a>
-            </div>
-            
-            <div class="mt-24 inline-block fade-in" style="animation-delay: 2s;">
-                <a href="#about" class="text-neon-blue animate-bounce">
-                    <i class="fas fa-chevron-down text-2xl"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-16 neon-text text-center slide-up">
-                About <span class="text-gradient">Me</span>
-            </h2>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="relative scale-in">
-                    <div class="w-full max-w-md mx-auto">
-                        <div class="relative glow-effect rounded-full overflow-hidden">
-                            <div class="absolute -inset-1 rounded-full bg-neon-green opacity-30 blur-md"></div>
-                            <div class="relative aspect-square rounded-full overflow-hidden border-4 border-neon-green/30">
-                                <img src="https://media.licdn.com/dms/image/v2/D4E03AQH2o9D76IunIw/profile-displayphoto-shrink_800_800/B4EZUeqYPDGwAc-/0/1739976181740?e=1752105600&v=beta&t=HXZiWeKnxnQQEG9Sdy1Vf0R3mvucXkDHqCaNriOZKkU" alt="Zaccaria Harda" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-12 grid grid-cols-2 gap-4">
-                        <div class="neon-box p-4 text-center rounded-lg hover:border-neon-green transition-all">
-                            <div class="text-3xl text-neon-green mb-2 counter" data-count="30">0</div>
-                            <div class="text-xs uppercase tracking-wider">Revenue (K)</div>
-                        </div>
-                        <div class="neon-box p-4 text-center rounded-lg hover:border-neon-blue transition-all">
-                            <div class="text-3xl text-neon-blue mb-2 counter" data-count="15">0</div>
-                            <div class="text-xs uppercase tracking-wider">Projects</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="relative slide-up" style="animation-delay: 0.3s;">
-                    <h3 class="text-2xl font-bold mb-6 text-gradient">
-                        IT Student | SaaS Founder | Cybersecurity Aspirant
-                    </h3>
-                    
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        I'm currently pursuing my BTEC Level 3 IT at Bolton Sixth Form College with a predicted grade of DDD, specializing in cybersecurity and cloud computing principles.
-                    </p>
-                    
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        As the founder of <span class="text-neon-green">Lantern.lol</span>, I've built a profitable SaaS platform from scratch while balancing my academic commitments. My journey has included valuable internships at <span class="text-neon-blue">Mastercard</span> and <span class="text-neon-blue">Fujitsu</span> where I gained hands-on experience with enterprise security operations.
-                    </p>
-                    
-                    <p class="text-gray-400 mb-8 leading-relaxed">
-                        Beyond technology, I'm fluent in English, Italian, and Arabic, and maintain a disciplined lifestyle that balances coding, gym, and entrepreneurship. I firmly believe in continuous growth through practical application of skills.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#experience" class="glow-effect ripple-effect px-6 py-3 border border-neon-green text-neon-green rounded-full text-sm font-bold hover:bg-neon-green hover:bg-opacity-10 transition-colors">
-                            View Experience
-                        </a>
-                        <a href="https://limewire.com/d/7Czxb#7uAc22O9bp" class="glow-effect ripple-effect px-6 py-3 border border-neon-blue text-neon-blue rounded-full text-sm font-bold hover:bg-neon-blue hover:bg-opacity-10 transition-colors">
-                            Download CV
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
         
-        <!-- Floating elements -->
-        <div class="absolute top-20 left-5 text-neon-green opacity-20 text-5xl floating" style="animation-delay: 0.2s;">
-            <i class="fab fa-python"></i>
-        </div>
-        <div class="absolute bottom-1/4 right-10 text-neon-blue opacity-20 text-5xl floating" style="animation-delay: 1s;">
-            <i class="fas fa-shield-alt"></i>
-        </div>
+        <!-- Particles -->
+        <div id="particles"></div>
     </section>
     
-    <!-- Experience Section -->
-    <section id="experience" class="section bg-gradient-to-b from-black/60 to-black/80">
-        <div class="max-w-6xl mx-auto px-4 relative">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-16 neon-text text-center slide-up">
-                Professional <span class="text-gradient">Experience</span>
-            </h2>
-            
-            <div class="relative max-w-3xl mx-auto">
-                <div class="timeline">
-                    <!-- Founder -->
-                    <div class="timeline-item slide-up">
-                        <div class="timeline-marker text-neon-green">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div class="neon-box p-6 rounded-lg hover:border-neon-green transition-all">
-                            <div class="flex justify-between items-start flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-xl font-bold text-neon-green">Founder & Full-Stack Developer</h3>
-                                    <h4 class="text-lg">Lantern.lol (SaaS Platform)</h4>
-                                </div>
-                                <span class="text-sm text-gray-400">2022 - Present</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">
-                                Built a profitable SaaS business from scratch, handling all aspects from development to customer acquisition and support.
-                            </p>
-                            <ul class="text-sm text-gray-400 space-y-2 mb-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Developed full-stack solution with Firebase, Node.js, and React</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Integrated Stripe payments and CRM tools to automate operations</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Generated £30K+ in revenue within first year of operation</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Managed SEO, analytics, and international customer support</span>
-                                </li>
-                            </ul>
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Firebase</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Node.js</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Stripe</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">SEO</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Google Analytics</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Cybersecurity Internships -->
-                    <div class="timeline-item slide-up" style="animation-delay: 0.2s;">
-                        <div class="timeline-marker text-neon-green">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="neon-box p-6 rounded-lg hover:border-neon-green transition-all">
-                            <div class="flex justify-between items-start flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-xl font-bold text-neon-green">Cybersecurity Intern</h3>
-                                    <h4 class="text-lg">Mastercard & Fujitsu</h4>
-                                </div>
-                                <span class="text-sm text-gray-400">2021 - 2022</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">
-                                Gained enterprise security experience through hands-on internships at two major financial institutions.
-                            </p>
-                            <ul class="text-sm text-gray-400 space-y-2 mb-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Conducted phishing simulations and vulnerability assessments</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Analyzed threats using Splunk and Nessus scanning tools</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Participated in SOC operations following NIST guidelines</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Documented security protocols and recommended improvements</span>
-                                </li>
-                            </ul>
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Splunk</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Nessus</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">NIST</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Phishing</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Incident Response</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Additional experience items -->
-                    <div class="timeline-item slide-up" style="animation-delay: 0.4s;">
-                        <div class="timeline-marker text-neon-green">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="neon-box p-6 rounded-lg hover:border-neon-green transition-all">
-                            <div class="flex justify-between items-start flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-xl font-bold text-neon-green">Developer</h3>
-                                    <h4 class="text-lg">Barclays</h4>
-                                </div>
-                                <span class="text-sm text-gray-400">2020</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">
-                                Worked on optimizing database architectures for financial applications.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">SQL</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Python</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Data Modeling</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item slide-up" style="animation-delay: 0.6s;">
-                        <div class="timeline-marker text-neon-green">
-                            <i class="fas fa-car"></i>
-                        </div>
-                        <div class="neon-box p-6 rounded-lg hover:border-neon-green transition-all">
-                            <div class="flex justify-between items-start flex-wrap gap-4 mb-4">
-                                <div>
-                                    <h3 class="text-xl font-bold text-neon-green">Data Collector & Analyst</h3>
-                                    <h4 class="text-lg">Family Vehicle Import Business</h4>
-                                </div>
-                                <span class="text-sm text-gray-400">2019 - Present</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">
-                                Managed and analyzed vehicle data from international markets to inform purchasing strategies.
-                            </p>
-                            <ul class="text-sm text-gray-400 space-y-2 mb-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Cleaned and maintained datasets from Japan, UAE, and Nigeria</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Developed dashboard to visualize pricing trends and inventory</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Improved buying decisions and inventory turnover by 30%</span>
-                                </li>
-                            </ul>
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Data Analysis</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Dashboard Development</span>
-                                <span class="skill-pill text-xs px-3 py-1 rounded-full">Market Research</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <!-- About Section -->
+<section id="about" class="py-20 bg-black bg-opacity-70 relative">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow animate-fade-in">
+        About <span class="text-white">Me</span>
+      </h2>
+  
+      <div class="flex flex-col lg:flex-row items-center gap-12 animate-fade-in" style="animation-delay: 200ms;">
+        <!-- Profile Image -->
+        <div class="relative scale-in">
+          <div class="w-full max-w-md mx-auto">
+            <div class="relative glow-effect rounded-full overflow-hidden">
+              <div class="absolute -inset-1 rounded-full bg-neon-green opacity-30 blur-md"></div>
+              <div class="relative aspect-square rounded-full overflow-hidden border-4 border-neon-green/30">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQH2o9D76IunIw/profile-displayphoto-shrink_800_800/B4EZUeqYPDGwAc-/0/1739976181740?e=1752105600&v=beta&t=HXZiWeKnxnQQEG9Sdy1Vf0R3mvucXkDHqCaNriOZKkU" alt="Zaccaria Harda" class="w-full max-w-md mx-auto relative">
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+  
+        <!-- Text Content -->
+        <div class="lg:w-1/2 animate-fade-in" style="animation-delay: 400ms;">
+          <h3 class="text-2xl font-bold mb-4 text-electric-blue">Tech-Savvy Student & Entrepreneur</h3>
+          <p class="text-gray-300 mb-6">
+            I'm a driven IT student with a passion for backend development, cybersecurity, and cloud technologies. 
+            Balancing academics, entrepreneurship, and personal growth, I've built a SaaS platform generating 
+            <span class="text-neon-green font-bold counter" data-target="30">0</span>K+ in revenue while maintaining 
+            excellence in my studies and fitness journey.
+          </p>
+  
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-neon-green">
+              <h4 class="font-bold text-lg text-white">Backend Development</h4>
+              <p class="text-gray-300">Building scalable systems and APIs</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-electric-blue">
+              <h4 class="font-bold text-lg text-white">Cybersecurity</h4>
+              <p class="text-gray-300">Threat analysis & ethical hacking</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-neon-green">
+              <h4 class="font-bold text-lg text-white">Cloud Technologies</h4>
+              <p class="text-gray-300">Deploying and managing cloud infrastructure</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-electric-blue">
+              <h4 class="font-bold text-lg text-white">Entrepreneurship</h4>
+              <p class="text-gray-300">Building and scaling SaaS products</p>
+            </div>
+          </div>
+  
+          <div class="flex flex-wrap gap-4">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-2">
+                <i class="fas fa-code text-black"></i>
+              </div>
+              <span class="text-gray-300">Python, JavaScript, SQL</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-electric-blue flex items-center justify-center mr-2">
+                <i class="fas fa-globe text-black"></i>
+              </div>
+              <span class="text-gray-300">English, Italian, Arabic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Counter Animation Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText;
+          const increment = target / 200;
+  
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            requestAnimationFrame(updateCount);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
+    });
+  </script>
+  
+  <!-- Tailwind Custom Animation Styles -->
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+  </style>
+<!-- Fitness Section -->
+<section id="fitness" class="py-20 bg-gray-900 relative">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-electric-blue glow">
+        Fitness <span class="text-white">Journey</span>
+      </h2>
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+  
+        <!-- Image -->
+        <div class="w-full lg:w-1/2">
+          <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg border-4 border-electric-blue">
+            <img src="https://i.ibb.co/xtMbHWPN/New-Project-4.png" alt="Fitness photo" class="w-full h-auto object-cover">
+          </div>
+        </div>
+  
+        <!-- Text Content -->
+        <div class="lg:w-1/2">
+          <h4 class="text-xl font-semibold text-neon-green mb-4">Strength Beyond the Screen</h4>
+          <p class="text-gray-300 text-lg leading-relaxed">
+            Fitness is more than a routine—it's the foundation of my mindset. Whether I’m lifting, running, or keeping a clean diet, training builds the discipline and focus I bring into cybersecurity and software development. Staying fit helps me stay sharp, consistent, and ready to tackle high-pressure challenges, both physically and mentally.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+    
+   <!-- Experience Section -->
+<section id="experience" class="py-20 bg-gray-900 relative">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
+        My <span class="text-white">Journey</span>
+      </h2>
+  
+      <div class="relative max-w-3xl mx-auto">
+        <div class="space-y-8 pl-8 md:pl-16">
+  
+          <!-- Network Pro -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-electric-blue">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Sales Account Executive</h3>
+                <span class="text-neon-green">Dec 2024 – Present</span>
+              </div>
+              <h4 class="text-lg font-semibold text-electric-blue mb-2">Network Pro</h4>
+              <p class="text-gray-300 mb-4">
+                Deployed AI-powered chatbots to enhance client acquisition and scale operations. Automated lead generation and support systems, cutting costs and response times. Delivered real-time analytics that boosted client retention by 20%.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">AI Chatbots</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Automation</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Analytics</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Mastercard -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-neon-green">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Cybersecurity Intern</h3>
+                <span class="text-electric-blue">Feb 2025 – Mar 2025</span>
+              </div>
+              <h4 class="text-lg font-semibold text-neon-green mb-2">Mastercard (Virtual Experience)</h4>
+              <p class="text-gray-300 mb-4">
+                Designed phishing simulations and explored real-world cybersecurity workflows. Strengthened skills in threat awareness, data analysis, and communication, while learning how technical and non-technical roles collaborate to protect enterprises.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Phishing Simulation</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Threat Analysis</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Fujitsu -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-electric-blue">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Cybersecurity Analyst</h3>
+                <span class="text-neon-green">Nov 2024</span>
+              </div>
+              <h4 class="text-lg font-semibold text-electric-blue mb-2">Fujitsu Sprint Program</h4>
+              <p class="text-gray-300 mb-4">
+                Acted as a cybersecurity specialist defending utilities from attacks. Gained practical experience in safeguarding critical infrastructure and applied team-based strategies to mitigate cyber risks.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Infrastructure Security</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Team Leadership</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Barclays -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-neon-green">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Junior Developer</h3>
+                <span class="text-electric-blue">Oct 2024 – Nov 2024</span>
+              </div>
+              <h4 class="text-lg font-semibold text-neon-green mb-2">Barclays Virtual Taster</h4>
+              <p class="text-gray-300 mb-4">
+                Designed and structured a database for a to-do list app. Gained hands-on experience with data modeling, schema design, and technical decision-making in software development.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Database Design</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">SQL</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Lantern.lol -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-electric-blue">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Founder & Lead Developer</h3>
+                <span class="text-neon-green">Mar 2022 – Present</span>
+              </div>
+              <h4 class="text-lg font-semibold text-electric-blue mb-2">Lantern.lol</h4>
+              <p class="text-gray-300 mb-4">
+                Built and scaled a SaaS business focused on automation and analytics. Managed development, customer service, and marketing in three languages. Continuously optimized processes and maintained service quality.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">SaaS</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Multilingual Support</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Process Improvement</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Vehicle Import Business -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-neon-green">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Data Collector & Ops Assistant</h3>
+                <span class="text-electric-blue">Jan 2023 – Present</span>
+              </div>
+              <h4 class="text-lg font-semibold text-neon-green mb-2">Family Vehicle Import Business</h4>
+              <p class="text-gray-300 mb-4">
+                Managed vehicle inventory systems and analyzed market trends across Japan, UAE, and Nigeria. Streamlined data collection and purchasing operations to support business growth.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Inventory</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Market Analysis</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Ops Support</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Samsung -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-electric-blue">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Product Design Intern</h3>
+                <span class="text-neon-green">Jun 2022 – Jul 2022</span>
+              </div>
+              <h4 class="text-lg font-semibold text-electric-blue mb-2">Samsung Electronics</h4>
+              <p class="text-gray-300 mb-4">
+                Contributed to design, concept refinement, and prototyping in a real-world tech environment. Developed creativity, problem-solving, and attention to detail on global product teams.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Design</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Creativity</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Mr Diagnostic -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-neon-green">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Assistant Mechanic</h3>
+                <span class="text-electric-blue">Jun 2022</span>
+              </div>
+              <h4 class="text-lg font-semibold text-neon-green mb-2">Mr Diagnostic</h4>
+              <p class="text-gray-300 mb-4">
+                Supported diagnostics and electronic fault repairs on vehicles. Developed strong discipline, hands-on technical skills, and exposure to IT tools in automotive repair.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Diagnostics</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Tech Tools</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- PSG Academy -->
+          <div class="timeline-item relative pl-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-electric-blue">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-white">Participant</h3>
+                <span class="text-neon-green">Oct 2021 – Dec 2021</span>
+              </div>
+              <h4 class="text-lg font-semibold text-electric-blue mb-2">Paris Saint-Germain Academy UK</h4>
+              <p class="text-gray-300 mb-4">
+                Trained under UEFA-certified coaches, developing football technique, communication, and strategic awareness in a highly competitive international environment.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Teamwork</span>
+                <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Discipline</span>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+  
     
     <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-16 neon-text text-center slide-up">
-                Featured <span class="text-gradient">Projects</span>
+    <section id="projects" class="py-20 bg-black bg-opacity-70 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
+                My <span class="text-white">Projects</span>
             </h2>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Mental Arithmetic App -->
-                <div class="group scale-in" style="animation-delay: 0.2s;">
-                    <div class="h-full neon-box rounded-lg overflow-hidden transition-all duration-500 group-hover:border-neon-purple">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="https://i.ibb.co/B29RLT0p/image.png" alt="Mental Arithmetic App" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-6">
-                                <h3 class="text-xl font-bold text-white">Mental Arithmetic App</h3>
-                                <p class="text-sm text-neon-purple">Educational Mobile App</p>
-                            </div>
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
+                    <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-6xl text-electric-blue"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Mental Arithmetic App</h3>
+                        <p class="text-gray-300 mb-4">
+                            Mobile application for children built in MIT App Inventor offering randomized arithmetic problems with level-based timers and progress tracking.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">MIT App Inventor</span>
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Education</span>
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Gamification</span>
                         </div>
-                        <div class="p-6 flex-grow">
-                            <p class="text-gray-400 mb-4 text-sm">
-                                Gamified learning app for children to practice arithmetic skills with randomized problems.
-                            </p>
-                            <ul class="text-xs text-gray-400 space-y-2 mb-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-purple mr-2 mt-1"></i>
-                                    <span>Built with MIT App Inventor</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-purple mr-2 mt-1"></i>
-                                    <span>Level-based challenges & progress tracking</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-purple mr-2 mt-1"></i>
-                                    <span>Animated characters & sound effects</span>
-                                </li>
-                            </ul>
-                            <a href="#" class="inline-flex items-center text-xs font-medium text-neon-purple hover:text-neon-blue transition-colors">
-                                View Project Details <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
+                        <button class="project-modal-btn px-4 py-2 bg-neon-green text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="arithmetic">
+                            View Details
+                        </button>
                     </div>
                 </div>
                 
                 <!-- Lantern.lol -->
-                <div class="group scale-in" style="animation-delay: 0.4s;">
-                    <div class="h-full neon-box rounded-lg overflow-hidden transition-all duration-500 group-hover:border-neon-green">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="https://media.licdn.com/dms/image/v2/D4E2DAQHO_2fSjgHnGQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1732380066754?e=1747090800&v=beta&t=dTNqCehq7pScRhfdbWe8zatKZ-nKbTvsDEH388P0G1E" alt="Lantern.lol SaaS" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-6">
-                                <h3 class="text-xl font-bold text-white">Lantern.lol</h3>
-                                <p class="text-sm text-neon-green">Automation SaaS Platform</p>
-                            </div>
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
+                    <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
+                        <i class="fas fa-rocket text-6xl text-neon-green"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Lantern.lol</h3>
+                        <p class="text-gray-300 mb-4">
+                            Live SaaS product offering time-saving automation tools for creators and businesses, with web development, UI/UX, and Stripe payments.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">SaaS</span>
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Automation</span>
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Stripe</span>
                         </div>
-                        <div class="p-6 flex-grow">
-                            <p class="text-gray-400 mb-4 text-sm">
-                                Full-stack SaaS solution for creators and businesses with automation tools.
-                            </p>
-                            <ul class="text-xs text-gray-400 space-y-2 mb-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Firebase backend with Node.js API</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Stripe integration for payments</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-green mr-2 mt-1"></i>
-                                    <span>Multilingual support (EN/IT/AR)</span>
-                                </li>
-                            </ul>
-                            <a href="https://lantern.lol" target="_blank" class="inline-flex items-center text-xs font-medium text-neon-green hover:text-neon-blue transition-colors">
-                                Visit Live Platform <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
+                        <button class="project-modal-btn px-4 py-2 bg-electric-blue text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="lantern">
+                            View Details
+                        </button>
                     </div>
                 </div>
                 
-                <!-- Vehicle Import Dashboard -->
-                <div class="group scale-in" style="animation-delay: 0.6s;">
-                    <div class="h-full neon-box rounded-lg overflow-hidden transition-all duration-500 group-hover:border-neon-blue">
-                        <div class="relative h-60 overflow-hidden">
-                            <img src="https://i.ibb.co/DDWj2JTb/New-Project-1.png" alt="Vehicle Import Dashboard" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-                            <div class="absolute bottom-0 left-0 p-6">
-                                <h3 class="text-xl font-bold text-white">Vehicle Import Dashboard</h3>
-                                <p class="text-sm text-neon-blue">Data Analysis System</p>
-                            </div>
+                <!-- Vehicle Import Ops Dashboard -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
+                    <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
+                        <i class="fas fa-car text-6xl text-neon-green"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Vehicle Import Ops Dashboard</h3>
+                        <p class="text-gray-300 mb-4">
+                            Internal system to clean, reconcile, and analyze vehicle data from suppliers in Japan, UAE, and Nigeria, improving buying decisions.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Data Analysis</span>
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Dashboard</span>
+                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Market Trends</span>
                         </div>
-                        <div class="p-6 flex-grow">
-                            <p class="text-gray-400 mb-4 text-sm">
-                                Internal system for analyzing international vehicle import markets.
-                            </p>
-                            <ul class="text-xs text-gray-400 space-y-2 mb-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-blue mr-2 mt-1"></i>
-                                    <span>Automated data collection</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-blue mr-2 mt-1"></i>
-                                    <span>Market trend visualization</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-neon-blue mr-2 mt-1"></i>
-                                    <span>Improved inventory turnover</span>
-                                </li>
-                            </ul>
-                            <a href="#" class="inline-flex items-center text-xs font-medium text-neon-blue hover:text-neon-green transition-colors">
-                                View Dashboard <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
+                        <button class="project-modal-btn px-4 py-2 bg-neon-green text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="vehicle">
+                            View Details
+                        </button>
                     </div>
                 </div>
-            </div>
-            
-            <div class="text-center mt-16 slide-up" style="animation-delay: 0.8s;">
-                <a href="#" class="glow-effect ripple-effect inline-flex items-center px-5 py-2.5 border border-neon-green text-neon-green rounded-full text-sm font-bold hover:bg-neon-green hover:bg-opacity-10 transition-colors">
-                    <i class="fab fa-github mr-2"></i> View All Projects
-                </a>
             </div>
         </div>
     </section>
     
     <!-- Skills Section -->
-    <section id="skills" class="section bg-gradient-to-b from-black/60 to-black/80">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-16 neon-text text-center slide-up">
-                Technical <span class="text-gradient">Skillset</span>
+    <section id="skills" class="py-20 bg-gray-900 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
+                Technical <span class="text-white">Skills</span>
             </h2>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Left Column -->
-                <div>
-                    <!-- Programming -->
-                    <div class="neon-box p-6 rounded-lg mb-8 slide-up">
-                        <h3 class="text-xl font-bold mb-6 text-neon-green flex items-center">
-                            <i class="fas fa-code mr-3"></i> Programming & Development
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="skill-pill px-4 py-2 rounded-full">
-                                <span class="text-neon-green mr-1"><i class="fab fa-js-square"></i></span> JavaScript
-                                <span class="text-xs text-gray-400 ml-2">(Node.js, React)</span>
-                            </div>
-                            <div class="skill-pill px-4 py-2 rounded-full">
-                                <span class="text-neon-green mr-1"><i class="fab fa-python"></i></span> Python
-                                <span class="text-xs text-gray-400 ml-2">(Automation, Backend)</span>
-                            </div>
-                            <div class="skill-pill px-4 py-2 rounded-full">
-                                <i class="fas fa-database text-neon-green mr-1"></i> SQL
-                                <span class="text-xs text-gray-400 ml-2">(Data handling)</span>
-                            </div>
-                            <div class="skill-pill px-4 py-2 rounded-full">
-                                <span class="text-neon-green mr-1"><i class="fas fa-mobile-alt"></i></span> MIT App Inventor
-                            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Programming -->
+                <div class="bg-gray-800 p-6 rounded-lg border-t-4 border-neon-green">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-neon-green flex items-center justify-center mr-3">
+                            <i class="fas fa-code text-black"></i>
                         </div>
+                        <h3 class="text-xl font-bold text-white">Programming</h3>
                     </div>
-                    
-                    <!-- Web & Cloud -->
-                    <div class="neon-box p-6 rounded-lg slide-up" style="animation-delay: 0.2s;">
-                        <h3 class="text-xl font-bold mb-6 text-neon-blue flex items-center">
-                            <i class="fas fa-cloud mr-3"></i> Web & Cloud Technologies
-                        </h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-blue mr-2"><i class="fab fa-google"></i></span> Firebase
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-blue mr-2"><i class="fab fa-docker"></i></span> Docker
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-blue mr-2"><i class="fas fa-ship"></i></span> Kubernetes
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-blue mr-2"><i class="fab fa-github"></i></span> GitHub
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-blue mr-2"><i class="fab fa-node-js"></i></span> Node.js
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-blue mr-2"><i class="fab fa-react"></i></span> Next.js
-                            </div>
+                    <div class="space-y-3">
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Python</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">JavaScript</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">SQL</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">MIT App Inventor</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Right Column -->
-                <div>
-                    <!-- Cybersecurity -->
-                    <div class="neon-box p-6 rounded-lg mb-8 slide-up">
-                        <h3 class="text-xl font-bold mb-6 text-neon-purple flex items-center">
-                            <i class="fas fa-shield-alt mr-3"></i> Cybersecurity
-                        </h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-purple mr-2"><i class="fas fa-file-contract"></i></span> NIST Framework
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-purple mr-2"><i class="fas fa-fish"></i></span> Phishing Simulation
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-purple mr-2"><i class="fas fa-bolt"></i></span> Threat Response
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-purple mr-2"><i class="fas fa-certificate"></i></span> ISO 27001
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-purple mr-2"><i class="fas fa-search"></i></span> Splunk
-                            </div>
-                            <div class="skill-pill px-3 py-1.5 rounded-full text-sm flex items-center">
-                                <span class="text-neon-purple mr-2"><i class="fas fa-search"></i></span> Nessus
-                            </div>
+                <!-- Web & Cloud -->
+                <div class="bg-gray-800 p-6 rounded-lg border-t-4 border-electric-blue">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-electric-blue flex items-center justify-center mr-3">
+                            <i class="fas fa-cloud text-black"></i>
                         </div>
+                        <h3 class="text-xl font-bold text-white">Web & Cloud</h3>
                     </div>
-                    
-                    <!-- Soft Skills -->
-                    <div class="neon-box p-6 rounded-lg slide-up" style="animation-delay: 0.2s;">
-                        <h3 class="text-xl font-bold mb-6 text-neon-green flex items-center">
-                            <i class="fas fa-brain mr-3"></i> Soft Skills
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                        <div class="skill-pill px-4 py-2 rounded-full">
-                            <i class="fas fa-users text-neon-green mr-1"></i> Teamwork
-                            <span class="text-xs text-gray-400 ml-2">(Amazon/PSG)</span>
+                    <div class="space-y-3">
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Firebase</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
                         </div>
-                        <div class="skill-pill px-4 py-2 rounded-full">
-                            <i class="fas fa-clock text-neon-green mr-1"></i> Time Management
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Docker</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
                         </div>
-                        <div class="skill-pill px-4 py-2 rounded-full">
-                            <i class="fas fa-flag text-neon-green mr-1"></i> Leadership
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Kubernetes</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
                         </div>
-                        <div class="skill-pill px-4 py-2 rounded-full">
-                            <i class="fas fa-language text-neon-green mr-1"></i> Multilingual
-                            <span class="text-xs text-gray-400 ml-2">(EN/IT/AR)</span>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Node.js</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
                         </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Next.js</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Certifications Section -->
-    <section id="certifications" class="section">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-16 neon-text text-center slide-up">
-                Professional <span class="text-gradient">Certifications</span>
-            </h2>
-            
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Cisco -->
-                <div class="certification-card scale-in" style="animation-delay: 0.2s;">
-                    <div class="neon-box h-full rounded-lg p-6 hover:border-neon-green transition-all duration-300 hover:shadow-lg hover:shadow-neon-green/20">
-                        <div class="w-14 h-14 bg-black/50 rounded-full flex items-center justify-center mb-4 border-2 border-neon-green mx-auto">
-                            <i class="fas fa-shield-halved text-2xl text-neon-green"></i>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2 text-center">Intro to Cybersecurity</h3>
-                        <p class="text-gray-400 text-sm mb-4 text-center">Cisco Networking Academy</p>
-                        <div class="mt-auto text-center">
-                            <button class="text-xs text-neon-green font-bold hover:text-neon-blue transition-colors">
-                                View Credential
-                            </button>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">GitHub</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Ethical Hacker -->
-                <div class="certification-card scale-in" style="animation-delay: 0.4s;">
-                    <div class="neon-box h-full rounded-lg p-6 hover:border-neon-green transition-all duration-300 hover:shadow-lg hover:shadow-neon-green/20">
-                        <div class="w-14 h-14 bg-black/50 rounded-full flex items-center justify-center mb-4 border-2 border-neon-green mx-auto">
-                            <i class="fas fa-user-secret text-2xl text-neon-green"></i>
+                <!-- Cybersecurity -->
+                <div class="bg-gray-800 p-6 rounded-lg border-t-4 border-neon-green">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-neon-green flex items-center justify-center mr-3">
+                            <i class="fas fa-shield-alt text-black"></i>
                         </div>
-                        <h3 class="text-lg font-bold mb-2 text-center">Ethical Hacker</h3>
-                        <p class="text-gray-400 text-sm mb-4 text-center">Cisco Networking Academy</p>
-                        <div class="mt-auto text-center">
-                            <button class="text-xs text-neon-green font-bold hover:text-neon-blue transition-colors">
-                                View Credential
-                            </button>
+                        <h3 class="text-xl font-bold text-white">Cybersecurity</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Ethical Hacking</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">NIST</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">ISO 27001</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Phishing Detection</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Vulnerability Tools</span>
+                            <span class="ml-auto text-electric-blue">Intermediate</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Google -->
-                <div class="certification-card scale-in" style="animation-delay: 0.6s;">
-                    <div class="neon-box h-full rounded-lg p-6 hover:border-neon-blue transition-all duration-300 hover:shadow-lg hover:shadow-neon-blue/20">
-                        <div class="w-14 h-14 bg-black/50 rounded-full flex items-center justify-center mb-4 border-2 border-neon-blue mx-auto">
-                            <i class="fab fa-google text-2xl text-neon-blue"></i>
+                <!-- Tools & Soft Skills -->
+                <div class="bg-gray-800 p-6 rounded-lg border-t-4 border-electric-blue">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-electric-blue flex items-center justify-center mr-3">
+                            <i class="fas fa-tools text-black"></i>
                         </div>
-                        <h3 class="text-lg font-bold mb-2 text-center">Google IT Support</h3>
-                        <p class="text-gray-400 text-sm mb-4 text-center">Google Certificates</p>
-                        <div class="mt-auto text-center">
-                            <button class="text-xs text-neon-blue font-bold hover:text-neon-green transition-colors">
-                                View Credential
-                            </button>
-                        </div>
+                        <h3 class="text-xl font-bold text-white">Tools & Soft Skills</h3>
                     </div>
-                </div>
-                
-                <!-- IBM -->
-                <div class="certification-card scale-in" style="animation-delay: 0.8s;">
-                    <div class="neon-box h-full rounded-lg p-6 hover:border-neon-purple transition-all duration-300 hover:shadow-lg hover:shadow-neon-purple/20">
-                        <div class="w-14 h-14 bg-black/50 rounded-full flex items-center justify-center mb-4 border-2 border-neon-purple mx-auto">
-                            <i class="fas fa-robot text-2xl text-neon-purple"></i>
+                    <div class="space-y-3">
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Google Analytics</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
                         </div>
-                        <h3 class="text-lg font-bold mb-2 text-center">AI Fundamentals</h3>
-                        <p class="text-gray-400 text-sm mb-4 text-center">IBM SkillsBuild</p>
-                        <div class="mt-auto text-center">
-                            <button class="text-xs text-neon-purple font-bold hover:text-neon-blue transition-colors">
-                                View Credential
-                            </button>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Microsoft 365</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Canva</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Stripe</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">CRM Systems</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Teamwork</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
+                        </div>
+                        <div class="skill-badge px-4 py-2 bg-gray-700 rounded-full flex items-center">
+                            <span class="text-white">Multilingual</span>
+                            <span class="ml-auto text-neon-green">Advanced</span>
                         </div>
                     </div>
                 </div>
@@ -804,265 +826,546 @@
     </section>
     
     <!-- Education Section -->
-    <section id="education" class="section bg-gradient-to-b from-black/60 to-black/80">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-16 neon-text text-center slide-up">
-                Education <span class="text-gradient">Background</span>
+    <section id="education" class="py-20 bg-black bg-opacity-70 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
+                My <span class="text-white">Education</span>
             </h2>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- BTEC -->
-                <div class="neon-box rounded-lg p-8 slide-up">
-                    <div class="flex items-start mb-6">
-                        <div class="bg-neon-green/20 text-neon-green p-3 rounded-full border border-neon-green mr-4">
-                            <i class="fas fa-graduation-cap"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- BTEC IT -->
+                <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-electric-blue hover:border-neon-green transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="flex items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-electric-blue flex items-center justify-center mr-4">
+                            <i class="fas fa-laptop-code text-xl text-black"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">BTEC Level 3 IT</h3>
-                            <p class="text-neon-green">Predicted: DDD (Triple Distinction)</p>
-                            <p class="text-gray-400 text-sm">Bolton Sixth Form College | 2021 - Present</p>
+                            <h3 class="text-xl font-bold text-white">BTEC Level 3 IT</h3>
+                            <p class="text-gray-300">Predicted DDD*</p>
                         </div>
                     </div>
-                    <p class="text-gray-400 mb-6 text-sm">
-                        Specialized coursework in networking, cybersecurity, and software development with hands-on projects including web applications, database systems, and network configurations.
+                    <p class="text-gray-300 mb-4">
+                        Bolton Sixth Form College<br>
+                        2021 - 2023
                     </p>
-                    <div class="space-y-2">
-                        <div class="flex items-center text-sm">
-                            <i class="fas fa-check-circle text-neon-green mr-2"></i>
-                            <span>Cybersecurity Principles & Practices</span>
-                        </div>
-                        <div class="flex items-center text-sm">
-                            <i class="fas fa-check-circle text-neon-green mr-2"></i>
-                            <span>Network Systems & Architecture</span>
-                        </div>
-                        <div class="flex items-center text-sm">
-                            <i class="fas fa-check-circle text-neon-green mr-2"></i>
-                            <span>Software Development Lifecycle</span>
-                        </div>
-                        <div class="flex items-center text-sm">
-                            <i class="fas fa-check-circle text-neon-green mr-2"></i>
-                            <span>Cloud Computing Concepts</span>
-                        </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Programming</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Networking</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Cybersecurity</span>
                     </div>
                 </div>
                 
-                <!-- GCSE -->
-                <div class="neon-box rounded-lg p-8 slide-up" style="animation-delay: 0.2s;">
-                    <div class="flex items-start mb-6">
-                        <div class="bg-neon-blue/20 text-neon-blue p-3 rounded-full border border-neon-blue mr-4">
-                            <i class="fas fa-school"></i>
+                <!-- GCSEs -->
+                <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-neon-green hover:border-electric-blue transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="flex items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-neon-green flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-xl text-black"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">GCSE Qualifications</h3>
-                            <p class="text-neon-blue">9 GCSEs (Grades 4-9)</p>
-                            <p class="text-gray-400 text-sm">Eden Boys' School | 2016 - 2021</p>
+                            <h3 class="text-xl font-bold text-white">9 GCSEs</h3>
+                            <p class="text-gray-300">Including Maths, Science, Italian</p>
                         </div>
                     </div>
-                    <p class="text-gray-400 mb-6 text-sm">
-                        Strong academic foundation with emphasis on STEM subjects that laid the groundwork for my technical career.
+                    <p class="text-gray-300 mb-4">
+                        Eden Boys' School<br>
+                        2016 - 2021
                     </p>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="px-2 py-1 bg-black/20 rounded text-center text-xs border border-neon-blue/30">
-                            Maths (6)
-                        </div>
-                        <div class="px-2 py-1 bg-black/20 rounded text-center text-xs border border-neon-blue/30">
-                            Science (6-6)
-                        </div>
-                        <div class="px-2 py-1 bg-black/20 rounded text-center text-xs border border-neon-blue/30">
-                            Italian (9)
-                        </div>
-                        <div class="px-2 py-1 bg-black/20 rounded text-center text-xs border border-neon-blue/30">
-                            English (5/4)
-                        </div>
-                        <div class="px-2 py-1 bg-black/20 rounded text-center text-xs border border-neon-blue/30">
-                            Business (5)
-                        </div>
-                        <div class="px-2 py-1 bg-black/20 rounded text-center text-xs border border-neon-blue/30">
-                            iMedia (Pass)
-                        </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Maths: 6</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Science: 6-6</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Italian: 9</span>
                     </div>
                 </div>
             </div>
+            
+  <!-- Certifications -->
+<h3 class="text-xl font-bold mt-16 mb-8 text-center text-electric-blue">
+    Certifications & Enrichment
+</h3>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- Cisco -->
+    <div class="certification-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-3">
+            <div class="w-8 h-8 rounded-full bg-electric-blue flex items-center justify-center mr-2">
+                <i class="fas fa-shield-alt text-black"></i>
+            </div>
+            <h3 class="text-md font-bold text-white">Cisco Certified Ethical Hacker</h3>
         </div>
-    </section>
+        <p class="text-gray-300 mb-3">
+            Cisco<br>
+            2025
+        </p>
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Penetration Testing</span>
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Security Auditing</span>
+        </div>
+    </div>
+
+    <!-- Google -->
+    <div class="certification-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-3">
+            <div class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-2">
+                <i class="fas fa-shield-alt text-black"></i>
+            </div>
+            <h3 class="text-md font-bold text-white">Google Foundations of Cybersecurity</h3>
+        </div>
+        <p class="text-gray-300 mb-3">
+            Google<br>
+            2025
+        </p>
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">IT Security</span>
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Risk Management</span>
+        </div>
+    </div>
+
+    <!-- CyberSec -->
+    <div class="certification-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-3">
+            <div class="w-8 h-8 rounded-full bg-electric-blue flex items-center justify-center mr-2">
+                <i class="fas fa-lightbulb text-black"></i>
+            </div>
+            <h3 class="text-md font-bold text-white">CyberSec First Responder</h3>
+        </div>
+        <p class="text-gray-300 mb-3">
+            CyberSec<br>
+            2024
+        </p>
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Incident Detection</span>
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Response Techniques</span>
+        </div>
+    </div>
+
+    <!-- IBM -->
+    <div class="certification-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-3">
+            <div class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-2">
+                <i class="fab fa-ibm text-black"></i>
+            </div>
+            <h3 class="text-md font-bold text-white">IBM Cybersecurity Careers</h3>
+        </div>
+        <p class="text-gray-300 mb-3">
+            IBM<br>
+            2025
+        </p>
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Security Operations</span>
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Cloud Security</span>
+        </div>
+    </div>
+
+    <!-- Google Data -->
+    <div class="certification-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-3">
+            <div class="w-8 h-8 rounded-full bg-electric-blue flex items-center justify-center mr-2">
+                <i class="fas fa-database text-black"></i>
+            </div>
+            <h3 class="text-md font-bold text-white">Google Foundations: Data</h3>
+        </div>
+        <p class="text-gray-300 mb-3">
+            Google<br>
+            2025
+        </p>
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Data Management</span>
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Data Analysis</span>
+        </div>
+    </div>
+
+    <!-- Coursera -->
+    <div class="certification-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <div class="flex items-center mb-3">
+            <div class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-2">
+                <i class="fab fa-coursera text-black"></i>
+            </div>
+            <h3 class="text-md font-bold text-white">Coursera Foundations of Cybersecurity</h3>
+        </div>
+        <p class="text-gray-300 mb-3">
+            Coursera<br>
+            2025
+        </p>
+        <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Core Concepts</span>
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Best Practices</span>
+        </div>
+    </div>
+</div>
+
     
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="max-w-6xl mx-auto text-center px-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 neon-text slide-up">
-                Let's <span class="text-gradient">Connect</span>
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 relative">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-neon-green glow">
+                Let's <span class="text-white">Connect</span>
             </h2>
             
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-12 slide-up" style="animation-delay: 0.2s;">
-                Interested in collaboration or want to discuss potential opportunities? Get in touch through any of these channels:
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://www.linkedin.com/in/zaccariah/" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-neon-green hover:text-black transition-all duration-300 transform hover:scale-110">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+               
+                </a>
+                <a href="mailto:hardazaccaria072@gmail.com" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-electric-blue hover:text-black transition-all duration-300 transform hover:scale-110">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+            
+            <p class="text-gray-400 mb-4">
+                <i class="fas fa-map-marker-alt mr-2"></i> Based in Manchester, UK
             </p>
             
-            <div class="flex justify-center gap-8 mb-16">
-                <a href="https://www.linkedin.com/in/zaccariah/" class="social-link slide-up" style="animation-delay: 0.4s;">
-                    <div class="w-16 h-16 rounded-full border-2 border-neon-green flex items-center justify-center text-neon-green text-2xl hover:bg-neon-green hover:text-black transition-colors relative overflow-hidden">
-                        <i class="fab fa-linkedin-in"></i>
+            <p class="text-gray-400">
+                &copy; 2025 Zaccaria Harda. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Project Modals -->
+    <div class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300" id="arithmeticModal">
+        <div class="modal-overlay absolute inset-0 bg-black bg-opacity-80"></div>
+        <div class="modal-content relative bg-gray-800 rounded-lg max-w-2xl w-full mx-4 p-6 transform translate-y-10">
+            <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-neon-green mb-4">Mental Arithmetic App</h3>
+            <div class="flex flex-col md:flex-row gap-6 mb-6">
+                <div class="md:w-1/3">
+                    <div class="bg-gray-700 h-48 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-6xl text-electric-blue"></i>
                     </div>
-                    <span class="text-xs mt-2">LinkedIn</span>
-                </a>
-                <a href="#" class="social-link slide-up" style="animation-delay: 0.6s;">
-                    <div class="w-16 h-16 rounded-full border-2 border-neon-blue flex items-center justify-center text-neon-blue text-2xl hover:bg-neon-blue hover:text-black transition-colors relative overflow-hidden">
-                        <i class="fab fa-github"></i>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-gray-300 mb-4">
+                        A mobile application designed to help children improve their mental arithmetic skills through gamified learning experiences.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">MIT App Inventor</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Education</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Gamification</span>
                     </div>
-                    <span class="text-xs mt-2">GitHub</span>
-                </a>
-                <a href="mailto:hardazaccaria072@gmail.com" class="social-link slide-up" style="animation-delay: 0.8s;">
-                    <div class="w-16 h-16 rounded-full border-2 border-neon-purple flex items-center justify-center text-neon-purple text-2xl hover:bg-neon-purple hover:text-black transition-colors relative overflow-hidden">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <span class="text-xs mt-2">Email</span>
-                </a>
+                </div>
             </div>
-            
-            <div class="text-gray-500 text-sm slide-up" style="animation-delay: 1s;">
-                <p>© 2025 Zaccaria Harda. All rights reserved.</p>
+            <div class="space-y-4">
+                <h4 class="text-xl font-bold text-white">Features</h4>
+                <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                    <li>Randomized arithmetic problems (1–12 multiplication tables)</li>
+                    <li>Level-based timers to increase difficulty</li>
+                    <li>Animated graphics and gamified interactions</li>
+                    <li>Progress tracking and performance analytics</li>
+                    <li>Child-friendly UI/UX design</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+    
+    <div class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300" id="lanternModal">
+        <div class="modal-overlay absolute inset-0 bg-black bg-opacity-80"></div>
+        <div class="modal-content relative bg-gray-800 rounded-lg max-w-2xl w-full mx-4 p-6 transform translate-y-10">
+            <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-electric-blue mb-4">Lantern.lol</h3>
+            <div class="flex flex-col md:flex-row gap-6 mb-6">
+                <div class="md:w-1/3">
+                    <div class="bg-gray-700 h-48 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-rocket text-6xl text-neon-green"></i>
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-gray-300 mb-4">
+                        A SaaS platform offering time-saving automation tools for creators and businesses, built entirely by me.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">SaaS</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Automation</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Stripe</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">30K+ Revenue</span>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-xl font-bold text-white">Key Aspects</h4>
+                <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                    <li>Full-stack development including UI/UX design</li>
+                    <li>Stripe integration for payment processing</li>
+                    <li>CRM integration capabilities</li>
+                    <li>SEO optimization and marketing strategy</li>
+                    <li>International customer support (English, Italian, Arabic)</li>
+                    <li>Analytics dashboard for user behavior tracking</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300" id="vehicleModal">
+        <div class="modal-overlay absolute inset-0 bg-black bg-opacity-80"></div>
+        <div class="modal-content relative bg-gray-800 rounded-lg max-w-2xl w-full mx-4 p-6 transform translate-y-10">
+            <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-neon-green mb-4">Vehicle Import Ops Dashboard</h3>
+            <div class="flex flex-col md:flex-row gap-6 mb-6">
+                <div class="md:w-1/3">
+                    <div class="bg-gray-700 h-48 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-car text-6xl text-electric-blue"></i>
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-gray-300 mb-4">
+                        An internal system to clean, reconcile, and analyze vehicle data from international suppliers.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Data Analysis</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Dashboard</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Market Trends</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Japan, UAE, Nigeria</span>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-xl font-bold text-white">Functionality</h4>
+                <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                    <li>Data cleaning and reconciliation from multiple sources</li>
+                    <li>Market trend analysis across Japan, UAE, and Nigeria</li>
+                    <li>Inventory tracking and purchasing decision support</li>
+                    <li>Profitability analysis and reporting</li>
+                    <li>Custom data visualization tools</li>
+                </ul>
+            </div>
+        </div>
+    </div>
     
     <script>
-        // Initialize Typed.js
-        document.addEventListener('DOMContentLoaded', function() {
-            // Typing effect
-            var typed = new Typed('.typing-text', {
-                strings: [
-                    "SaaS Founder",
-                    "Cybersecurity Explorer", 
-                    "IT Student",
-                    "Backend Developer",
-                    "Tech Entrepreneur"
-                ],
-                typeSpeed: 50,
-                backSpeed: 25,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
             });
+        });
+        
+        // Typing Effect
+        const typingText = document.getElementById('typingText');
+        const phrases = [
+            "Aspiring to dive into the tech sector",
+            "IT Student",
+            "SaaS Founder",
+            "Cybersecurity Enthusiast"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
+        
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
             
-            // Create ripple effect on buttons
-            document.querySelectorAll('.ripple-effect').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    const x = e.clientX - e.target.getBoundingClientRect().left;
-                    const y = e.clientY - e.target.getBoundingClientRect().top;
-                    
-                    const ripple = document.createElement('span');
-                    ripple.style.left = `${x}px`;
-                    ripple.style.top = `${y}px`;
-                    
-                    this.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-            
-            // Animated counters
-            function animateCounters() {
-                const counters = document.querySelectorAll('.counter');
-                const speed = 200;
-                
-                counters.forEach(counter => {
-                    const updateCount = () => {
-                        const target = +counter.getAttribute('data-count');
-                        const count = +counter.innerText.replace('+', '');
-                        const increment = target / speed;
-                        
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count + increment);
-                            setTimeout(updateCount, 1);
-                        } else {
-                            counter.innerText = target + '+';
-                        }
-                    };
-                    
-                    updateCount();
-                });
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
             }
             
-            // Intersection Observer for animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.id === 'about') {
-                            animateCounters();
-                        }
-                        
-                        const animation = entry.target.getAttribute('data-animation') || 
-                                         entry.target.classList.contains('section') ? 'fade-in' : 
-                                         entry.target.querySelector('[data-animation]')?.getAttribute('data-animation');
-                        
-                        if (animation) {
-                            entry.target.classList.add(animation);
-                        }
-                    }
-                });
-            }, {
-                threshold: 0.1
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isEnd = true;
+                setTimeout(() => {
+                    isDeleting = true;
+                }, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+            
+            const speed = isDeleting ? 50 : isEnd ? 100 : 100;
+            setTimeout(type, speed);
+        }
+        
+        // Start typing effect
+        setTimeout(type, 1000);
+        
+        // Matrix Background
+        const matrixBg = document.getElementById('matrixBg');
+        
+        function createMatrixLines() {
+            const width = window.innerWidth;
+            const count = Math.floor(width / 20);
+            
+            for (let i = 0; i < count; i++) {
+                const line = document.createElement('div');
+                line.classList.add('matrix-line');
+                line.style.left = `${Math.random() * 100}%`;
+                line.style.animationDuration = `${3 + Math.random() * 5}s`;
+                line.style.animationDelay = `${Math.random() * 5}s`;
+                line.style.opacity = Math.random();
+                matrixBg.appendChild(line);
+            }
+        }
+        
+        createMatrixLines();
+        
+        // Particles
+        const particlesContainer = document.getElementById('particles');
+        
+        function createParticles() {
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 5 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100 + 100}%`;
+                
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+        
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+        
+        // Activate counters when scrolled into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        // Modal Handling
+        const modalBtns = document.querySelectorAll('.project-modal-btn');
+        const modals = {
+            arithmetic: document.getElementById('arithmeticModal'),
+            lantern: document.getElementById('lanternModal'),
+            vehicle: document.getElementById('vehicleModal')
+        };
+        const modalCloses = document.querySelectorAll('.modal-close');
+        
+        modalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const project = btn.getAttribute('data-project');
+                const modal = modals[project];
+                
+                modal.classList.add('active');
+                modal.querySelector('.modal-overlay').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        modalCloses.forEach(close => {
+            close.addEventListener('click', () => {
+                const modal = close.closest('.modal');
+                modal.classList.remove('active');
+                modal.querySelector('.modal-overlay').classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    const modal = overlay.closest('.modal');
+                    modal.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Navigation active state
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
             });
             
-            // Observe all sections and elements with data-animation
-            document.querySelectorAll('section, [data-animation]').forEach(element => {
-                observer.observe(element);
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
             });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                });
-            });
-            
-            // Navigation dots functionality
-            const sections = document.querySelectorAll('section');
-            const navDots = document.querySelectorAll('.nav-dot');
-            
-            window.addEventListener('scroll', () => {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navDots.forEach(dot => {
-                    dot.classList.remove('active');
-                    if (dot.getAttribute('data-section') === current) {
-                        dot.classList.add('active');
-                    }
-                });
-            });
-            
-            navDots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    const sectionId = dot.getAttribute('data-section');
-                    document.getElementById(sectionId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            
-            // Add animation classes on load for hero section elements
-            document.querySelectorAll('#hero [class*="fade-in"], #hero [class*="slide-up"]').forEach((el, index) => {
-                if (el.classList.contains('fade-in')) {
-                    el.style.animationDelay = `${index * 0.2 + 0.2}s`;
                 }
-                if (el.classList.contains('slide-up')) {
-                    el.style.animationDelay = `${index * 0.2 + 0.3}s`;
-                }
-                el.style.opacity = 1;
             });
         });
     </script>
