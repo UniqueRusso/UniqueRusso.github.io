@@ -403,7 +403,12 @@
                 background-clip: text;
                 color: transparent;
             }
-        
+            
+            @media (max-width: 768px) {
+                .matrix-line {
+                  opacity: 0.1; /* or use display: none; to hide completely */
+                }
+              }
     </style>
 </head>
 <body class="dark:bg-gray-900 dark:text-white">
