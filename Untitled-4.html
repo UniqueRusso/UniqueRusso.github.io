@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaccaria Harda | IT & Cybersecurity Apprentice | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        
+        .dark body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            position: fixed;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease;
+        }
+        
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.4s ease, width 0.3s ease, height 0.3s ease;
+        }
+        
+        .hover-effect:hover ~ .cursor {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        
+        .hover-effect:hover ~ .cursor-follower {
+            transform: translate(-50%, -50%) scale(0.8);
+            background-color: rgba(59, 130, 246, 0.2);
+        }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 3px solid white;
+        }
+        
+        .dark .timeline-item::before {
+            border: 3px solid #0f172a;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #e2e8f0;
+        }
+        
+        .dark .timeline::before {
+            background-color: #334155;
+        }
+        
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .rotate-words {
+            display: inline-block;
+            position: relative;
+            height: 1.5em;
+            overflow: hidden;
+        }
+        
+        .rotate-words span {
+            display: block;
+            position: absolute;
+            white-space: nowrap;
+            left: 0;
+            top: 0;
+            animation: rotateWords 12s infinite;
+            opacity: 0;
+        }
+        
+        .rotate-words span:nth-child(2) {
+            animation-delay: 3s;
+        }
+        
+        .rotate-words span:nth-child(3) {
+            animation-delay: 6s;
+        }
+        
+        .rotate-words span:nth-child(4) {
+            animation-delay: 9s;
+        }
+        
+        @keyframes rotateWords {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            5% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            25% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md dark:bg-slate-900/80 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold text-gradient hover-effect">ZH</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover-effect">About</a>
+                    <a href="#experience" class="nav-link text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover-effect">Experience</a>
+                    <a href="#education" class="nav-link text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover-effect">Education</a>
+                    <a href="#skills" class="nav-link text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover-effect">Skills</a>
+                    <a href="#projects" class="nav-link text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover-effect">Projects</a>
+                    <a href="#contact" class="nav-link text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover-effect">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    
+                    <button class="md:hidden p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-16 px-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Hi, I'm <span class="text-gradient">Zaccaria Harda</span>
+            </h1>
+            
+            <div class="text-2xl md:text-4xl font-medium mb-8">
+                <span>Aspiring </span>
+                <div class="rotate-words inline-block">
+                    <span class="text-gradient">IT & Cybersecurity Degree Apprentice</span>
+                    <span class="text-gradient">Software Engineer</span>
+                    <span class="text-gradient">Cybersecurity Enthusiast</span>
+                    <span class="text-gradient">Founder</span>
+                </div>
+            </div>
+            
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-12">
+                Building secure digital solutions while bridging the gap between technology and business needs.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-emerald-500 text-white rounded-full font-medium hover:shadow-lg transition-all hover-effect">
+                    Let's Connect
+                </a>
+                <a href="#projects" class="px-8 py-3 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover-effect">
+                    View My Work
+                </a>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+                <a href="#about" class="block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-slate-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-slate-50 dark:bg-slate-900 section">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-gradient">About Me</span>
+            </h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/3 flex justify-center">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Zaccaria Harda" 
+                             class="w-64 h-64 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg">
+                        <div class="absolute -bottom-3 -right-3 bg-gradient-to-r from-blue-500 to-emerald-500 p-2 rounded-full">
+                            <div class="bg-white dark:bg-slate-900 p-2 rounded-full">
+                                <i class="fas fa-code text-xl text-gradient"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-2/3">
+                    <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">
+                        I'm an aspiring IT & Cybersecurity Degree Apprentice with a passion for building secure, scalable software solutions. 
+                        My journey in technology began with a curiosity about how systems work, which evolved into expertise in backend development, 
+                        cloud infrastructure, and ethical hacking.
+                    </p>
+                    
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">
+                        Currently, I'm balancing my academic pursuits with managing my SaaS business, Lantern.lol, where I handle everything from 
+                        product development to operations. When I'm not coding or studying cybersecurity, you can find me at the gym, watching football, 
+                        or experimenting with new technologies.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm text-center">
+                            <div class="text-gradient text-2xl mb-2">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <p class="font-medium">Bilingual</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Italian & English</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm text-center">
+                            <div class="text-gradient text-2xl mb-2">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <p class="font-medium">Security Nerd</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Ethical Hacking</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm text-center">
+                            <div class="text-gradient text-2xl mb-2">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <p class="font-medium">Fitness</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Gym Enthusiast</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm text-center">
+                            <div class="text-gradient text-2xl mb-2">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <p class="font-medium">Football</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">AC Milan Fan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="px-6 py-2 bg-gradient-to-r from-blue-500 to-emerald-500 text-white rounded-full font-medium hover:shadow-lg transition-all hover-effect">
+                            Contact Me
+                        </a>
+                        <a href="#" class="px-6 py-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover-effect">
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-semibold mb-8 text-center">My Journey</h3>
+                
+                <div class="relative pl-12 timeline">
+                    <div class="mb-12 timeline-item">
+                        <div class="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg">BTEC Level 3 IT</h4>
+                                    <p class="text-slate-500 dark:text-slate-400">Predicted DDD*</p>
+                                </div>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">2023 - Present</span>
+                            </div>
+                            <p class="mt-2 text-slate-600 dark:text-slate-400">
+                                Specializing in cybersecurity, software development, and networking fundamentals.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12 timeline-item">
+                        <div class="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg">Founder & Lead Developer</h4>
+                                    <p class="text-slate-500 dark:text-slate-400">Lantern.lol</p>
+                                </div>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">2022 - Present</span>
+                            </div>
+                            <p class="mt-2 text-slate-600 dark:text-slate-400">
+                                Built and launched a SaaS platform with multilingual support, handling all aspects from development to operations.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12 timeline-item">
+                        <div class="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg">Cybersecurity Intern</h4>
+                                    <p class="text-slate-500 dark:text-slate-400">Mastercard</p>
+                                </div>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Summer 2023</span>
+                            </div>
+                            <p class="mt-2 text-slate-600 dark:text-slate-400">
+                                Designed phishing simulations to improve employee awareness and reduce security risks.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg">Sales Account Executive</h4>
+                                    <p class="text-slate-500 dark:text-slate-400">Network Pro</p>
+                                </div>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">2021 - 2022</span>
+                            </div>
+                            <p class="mt-2 text-slate-600 dark:text-slate-400">
+                                Developed AI-powered chatbots and automated lead generation, improving client acquisition by 20%.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6 section">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-gradient">My Experience</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Experience Card 1 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md hover-effect">
+                    <div class="p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                                <i class="fas fa-briefcase text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl">Founder & Lead Developer</h3>
+                                <p class="text-slate-500 dark:text-slate-400">Lantern.lol • 2022 - Present</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-slate-600 dark:text-slate-400">
+                            As the founder of Lantern.lol, I've built a SaaS platform from the ground up, managing all aspects of the business including:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Full-stack web development using modern JavaScript frameworks</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Implementing multilingual support for global accessibility</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Cloud infrastructure setup and maintenance on AWS</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Business operations, customer support, and growth strategies</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Card 2 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md hover-effect">
+                    <div class="p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl">Cybersecurity Intern</h3>
+                                <p class="text-slate-500 dark:text-slate-400">Mastercard • Summer 2023</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-slate-600 dark:text-slate-400">
+                            During my internship at Mastercard, I worked on security awareness initiatives:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Designed and deployed phishing simulation campaigns</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Analyzed results to identify vulnerable employee groups</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Created educational materials to improve security awareness</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Presented findings to security leadership team</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Card 3 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md hover-effect">
+                    <div class="p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                                <i class="fas fa-network-wired text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl">Cybersecurity Analyst</h3>
+                                <p class="text-slate-500 dark:text-slate-400">Fujitsu Sprint Program • 2022</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-slate-600 dark:text-slate-400">
+                            Participated in Fujitsu's cybersecurity sprint program defending critical infrastructure:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Monitored and defended a water company's digital infrastructure</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Identified and mitigated potential security threats</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Worked with a team to implement security best practices</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt=1 mr-2"></i>
+                                <span>Documented security procedures and incident response plans</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Card 4 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md hover-effect">
+                    <div class="p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                                <i class="fas fa-robot text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl">Sales Account Executive</h3>
+                                <p class="text-slate-500 dark:text-slate-400">Network Pro • 2021 - 2022</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-slate-600 dark:text-slate-400">
+                            Combined technical skills with business development at Network Pro:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Developed AI-powered chatbots to automate customer interactions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Created automated lead generation systems improving acquisition by 20%</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Managed client relationships and technical implementations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-emerald-500 mt-1 mr-2"></i>
+                                <span>Analyzed sales data to identify trends and opportunities</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education & Certifications Section -->
+    <section id="education" class="py-20 px-6 bg-slate-50 dark:bg-slate-900 section">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-gradient">Education & Certifications</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Education Card -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">BTEC Level 3 IT</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4">
+                        Specializing in cybersecurity, software development, and networking with predicted DDD* grades.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">2023 - Present</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">London, UK</span>
+                    </div>
+                </div>
+                
+                <!-- Certification Card 1 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                            <i class="fas fa-certificate text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Cisco Certified Ethical Hacker</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4">
+                        Certified in ethical hacking techniques, penetration testing, and vulnerability assessment.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Expected 2025</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">Cisco</span>
+                    </div>
+                </div>
+                
+                <!-- Certification Card 2 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                            <i class="fas fa-certificate text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Google Foundations of Cybersecurity</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4">
+                        Completed Google's professional certificate covering cybersecurity fundamentals and best practices.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Expected 2025</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">Google</span>
+                    </div>
+                </div>
+                
+                <!-- Certification Card 3 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                            <i class="fas fa-certificate text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">IBM Cybersecurity Careers</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4">
+                        Professional certification covering cybersecurity career pathways and technical skills.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Expected 2025</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">IBM</span>
+                    </div>
+                </div>
+                
+                <!-- Certification Card 4 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                            <i class="fas fa-certificate text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">CyberSec First Responder</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4">
+                        Certified in detecting, responding to, and resolving cybersecurity incidents.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">2024</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">CFR</span>
+                    </div>
+                </div>
+                
+                <!-- Certification Card 5 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                            <i class="fas fa-certificate text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Developer Work Experience</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4">
+                        Designed and implemented a database system for a to-do application at Barclays.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">2022</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">Barclays</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-emerald-500 text-white rounded-full font-medium hover:shadow-lg transition-all hover-effect inline-flex items-center">
+                    <i class="fas fa-download mr-2"></i> Download Full CV
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 section">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-gradient">My Skills</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Programming Skills -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-2 rounded-lg text-white">
+                            <i class="fas fa-code text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Programming</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="skill-tag px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+                            Python
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+                            JavaScript
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+                            SQL
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+                            MATLAB
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+                            MIT App Inventor
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Web Development -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-2 rounded-lg text-white">
+                            <i class="fas fa-globe text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Web Development</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="skill-tag px-4 py-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">
+                            HTML
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">
+                            CSS
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">
+                            React
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">
+                            Tailwind
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full">
+                            Node.js
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cybersecurity -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-2 rounded-lg text-white">
+                            <i class="fas fa-shield-alt text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Cybersecurity</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="skill-tag px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">
+                            Threat Analysis
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">
+                            Ethical Hacking
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">
+                            Phishing Analysis
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">
+                            Incident Response
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">
+                            Security Awareness
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cloud & DevOps -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-2 rounded-lg text-white">
+                            <i class="fas fa-cloud text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Cloud & DevOps</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="skill-tag px-4 py-2 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">
+                            Docker
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">
+                            Kubernetes
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">
+                            CI/CD Pipelines
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">
+                            AWS Basics
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full">
+                            Server Management
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Database -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-2 rounded-lg text-white">
+                            <i class="fas fa-database text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Database</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="skill-tag px-4 py-2 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full">
+                            SQL
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full">
+                            MongoDB
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full">
+                            Firebase
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full">
+                            Database Design
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full">
+                            Query Optimization
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-all hover-effect">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-2 rounded-lg text-white">
+                            <i class="fas fa-tools text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="skill-tag px-4 py-2 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full">
+                            Microsoft 365
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full">
+                            Google Workspace
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full">
+                            Git
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full">
+                            VS Code
+                        </div>
+                        <div class="skill-tag px-4 py-2 bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full">
+                            Postman
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 bg-slate-50 dark:bg-slate-900 section">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-gradient">Featured Projects</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Lantern.lol SaaS Platform" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">Lantern.lol SaaS Platform</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            A multilingual SaaS platform I built from scratch, handling all aspects from development to deployment and operations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full text-sm">AWS</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1655720828011-0c063c0f1253?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="AI Chatbot Deployment" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">AI Chatbot Deployment</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Developed and deployed AI-powered chatbots at Network Pro that automated lead generation and improved client acquisition by 20%.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 rounded-full text-sm">NLP</span>
+                            <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">API</span>
+                            <span class="px-3 py-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full text-sm">Automation</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400">
+                                <i class="fas fa-external-link-alt"></i> Case Study
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="To-Do App Database System" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">To-Do App Database System</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Designed and implemented a robust database system for a to-do application during my developer work experience at Barclays.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">SQL</span>
+                            <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 rounded-full text-sm">Database Design</span>
+                            <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Backend</span>
+                            <span class="px-3 py-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-full text-sm">API</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400">
+                                <i class="fas fa-external-link-alt"></i> Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="px-8 py-3 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover-effect inline-flex items-center">
+                    <i class="fab fa-github mr-2"></i> View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 section">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-gradient">Get In Touch</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Let's Work Together</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-8">
+                        Whether you're interested in discussing a project, potential opportunities, or just want to connect, 
+                        I'd love to hear from you. Feel free to reach out through the form or directly via email or LinkedIn.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <a href="mailto:hello@zaccariaharda.com" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
+                                    hello@zaccariaharda.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">LinkedIn</h4>
+                                <a href="https://linkedin.com/in/zaccariaharda" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
+                                    linkedin.com/in/zaccariaharda
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-500 p-3 rounded-lg text-white">
+                                <i class="fab fa-github text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">GitHub</h4>
+                                <a href="https://github.com/zaccariaharda" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
+                                    github.com/zaccariaharda
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-800 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-800 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-800 dark:text-white"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-emerald-500 text-white rounded-lg font-medium hover:shadow-lg transition-all hover-effect">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-slate-50 dark:bg-slate-900">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-2xl font-bold text-gradient hover-effect">Zaccaria Harda</a>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2">
+                        Building secure digital solutions for the future.
+                    </p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com/in/zaccariaharda" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-xl hover-effect">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/zaccariaharda" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-xl hover-effect">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:hello@zaccariaharda.com" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-xl hover-effect">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-200 dark:border-slate-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-4 md:mb-0">
+                    © 2023 Zaccaria Harda. All rights reserved.
+                </p>
+                
+                <div class="flex space-x-6">
+                    <a href="#about" class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm hover-effect">About</a>
+                    <a href="#experience" class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm hover-effect">Experience</a>
+                    <a href="#projects" class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm hover-effect">Projects</a>
+                    <a href="#contact" class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm hover-effect">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            cursorFollower.style.left = e.clientX + 'px';
+            cursorFollower.style.top = e.clientY + 'px';
+        });
+        
+        // Click effect
+        document.addEventListener('click', () => {
+            cursorFollower.style.width = '20px';
+            cursorFollower.style.height = '20px';
+            
+            setTimeout(() => {
+                cursorFollower.style.width = '40px';
+                cursorFollower.style.height = '40px';
+            }, 100);
+        });
+        
+        // Hover effects
+        const hoverElements = document.querySelectorAll('.hover-effect');
+        
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorFollower.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                cursorFollower.style.backgroundColor = 'rgba(59, 130, 246, 0.2)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorFollower.style.backgroundColor = 'transparent';
+            });
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or use preferred color scheme
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // Scroll animation
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle (placeholder for future implementation)
+        const mobileMenuButton = document.querySelector('.md\\:hidden');
+        mobileMenuButton.addEventListener('click', () => {
+            alert('Mobile menu functionality would be implemented here');
+        });
+    </script>
+</body>
+</html>
