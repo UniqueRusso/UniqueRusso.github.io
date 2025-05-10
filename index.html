@@ -490,20 +490,40 @@
         <!-- Particles -->
         <div id="particles"></div>
     </section>
-  <!-- About Section -->
+
+
+
+
+
+
+<!-- About Section -->
 <section id="about" class="py-20 bg-black relative">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow animate-fade-in">
         About <span class="text-white">Me</span>
       </h2>
   
+
+  
       <div class="flex flex-col lg:flex-row items-center gap-12 animate-fade-in" style="animation-delay: 200ms;">
-        <!-- Profile Image -->
-        <div class="relative scale-in w-full max-w-md mx-auto">
-          <div class="relative glow-effect rounded-full overflow-hidden">
-            <div class="absolute -inset-1 rounded-full bg-neon-green opacity-30 blur-md"></div>
-            <div class="relative aspect-square rounded-full overflow-hidden border-4 border-neon-green/30">
-              <img src="https://media.licdn.com/dms/image/v2/D4E03AQH2o9D76IunIw/profile-displayphoto-shrink_800_800/B4EZUeqYPDGwAc-/0/1739976181740?e=1752105600&v=beta&t=HXZiWeKnxnQQEG9Sdy1Vf0R3mvucXkDHqCaNriOZKkU" alt="Zaccaria Harda headshot" class="w-full h-full object-cover">
+  
+        <!-- Profile Image with Scroll-Triggered Location Badge -->
+        <div class="relative scale-in w-full max-w-md mx-auto mb-8 lg:mb-0" id="profile-image-section">
+          <!-- Location Badge -->
+          <div class="location-badge opacity-0 translate-y-4 transition duration-700 ease-in-out absolute -top-4 -right-4 bg-white text-sm text-green-700 font-semibold px-3 py-1 rounded-md shadow-md border border-neon-green flex items-center space-x-2 z-10">
+            <i class="fas fa-map-marker-alt text-neon-green"></i>
+            <span>Bolton, Manchester</span>
+          </div>
+  
+          <div class="relative glow-effect rounded-full">
+            <!-- Neon Glow Effect -->
+            <div class="absolute -inset-1 rounded-full bg-neon-green opacity-30 blur-md z-0"></div>
+  
+            <!-- Circular Profile Image -->
+            <div class="relative aspect-square rounded-full overflow-hidden border-4 border-neon-green/30 z-10">
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQH2o9D76IunIw/profile-displayphoto-shrink_800_800/B4EZUeqYPDGwAc-/0/1739976181740?e=1752105600&v=beta&t=HXZiWeKnxnQQEG9Sdy1Vf0R3mvucXkDHqCaNriOZKkU"
+                alt="Zaccaria Harda headshot"
+                class="w-full h-full object-cover">
             </div>
           </div>
         </div>
@@ -517,7 +537,7 @@
             <span class="text-neon-green font-bold counter" data-target="30">0</span>K in revenue, while maintaining top performance in my studies.
           </p>
   
-          <div class="grid grid-cols-2 gap-4 mb-8">
+          <div class="grid grid-cols-2 gap-6 mb-8">
             <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-neon-green">
               <h4 class="font-bold text-lg text-white">Backend Development</h4>
               <p class="text-gray-300 text-sm">Scalable systems & API architecture</p>
@@ -531,12 +551,12 @@
               <p class="text-gray-300 text-sm">Infrastructure setup & scaling</p>
             </div>
             <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-electric-blue overflow-hidden break-words">
-                <h4 class="font-bold text-lg text-white">Entrepreneurship</h4>
-                <p class="text-gray-300 text-sm">Creating & scaling SaaS products</p>
-              </div>
+              <h4 class="font-bold text-lg text-white">Entrepreneurship</h4>
+              <p class="text-gray-300 text-sm">Creating & scaling SaaS products</p>
+            </div>
           </div>
   
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-6">
             <div class="flex items-center">
               <div class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-2">
                 <i class="fas fa-code text-black"></i>
@@ -555,41 +575,10 @@
     </div>
   </section>
   
-  <!-- Counter Animation Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const counters = document.querySelectorAll('.counter');
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        let count = 0;
   
-        const updateCount = () => {
-          const increment = target / 100;
   
-          if (count < target) {
-            count += increment;
-            counter.innerText = Math.floor(count);
-            requestAnimationFrame(updateCount);
-          } else {
-            counter.innerText = target;
-          }
-        };
+
   
-        updateCount();
-      });
-    });
-  </script>
-  
-  <!-- Tailwind Custom Animation Styles -->
-  <style>
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in {
-      animation: fadeIn 1s ease-out forwards;
-    }
-  </style>
   
 <!-- Fitness Section -->
 <section id="fitness" class="py-20 bg-black -900 relative">
@@ -1617,6 +1606,9 @@
                   if (hour < 18) return "Good afternoon";
                   return "Good evening";
                 };
+
+
+                
             
                 // Function to get user's location using IP
                 const getLocation = async () => {
@@ -1654,11 +1646,27 @@
               });
               
               
+             // Show location badge when scrolled into view
+const badgeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-4');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            badgeObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+const locationBadge = document.querySelector('.location-badge');
+if (locationBadge) {
+    badgeObserver.observe(locationBadge);
+}
               
               
               
-              
-            </script>
+        
+           
+              </script>
 
 
           
