@@ -8,410 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="style.css">
 
-    <style>
-        :root {
-            --neon-green: #0afc0a;
-            --electric-blue: #00f5ff;
-        }
-        
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #0a0a0a;
-            color: #f5f5f5;
-            scroll-behavior: smooth;
-        }
-        
-        .text-neon-green {
-            color: var(--neon-green);
-        }
-        
-        .text-electric-blue {
-            color: var(--electric-blue);
-        }
-        
-        .bg-neon-green {
-            background-color: var(--neon-green);
-        }
-        
-        .bg-electric-blue {
-            background-color: var(--electric-blue);
-        }
-        
-        .border-neon-green {
-            border-color: var(--neon-green);
-        }
-        
-        .border-electric-blue {
-            border-color: var(--electric-blue);
-        }
-        
-        .glow {
-            text-shadow: 0 0 5px currentColor;
-        }
-        
-        .glow-box {
-            box-shadow: 0 0 10px currentColor;
-        }
-        
-        .typing-text::after {
-            content: '|';
-            animation: blink 0,3ms step-end infinite;
-        }
-        
-        @keyframes blink {
-            from, to { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        .matrix-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            overflow: hidden;
-            z-index: -1;
-        }
-        
-        .matrix-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0,0,0,0.65) 70%);
-            z-index: 2;
-        }
-        
-        .matrix-line {
-            position: absolute;
-            width: 2px;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, var(--electric-blue));
-            animation: matrix-fall linear infinite;
-        }
-        
-        @keyframes matrix-fall {
-            from { transform: translateY(-100px); }
-            to { transform: translateY(100vh); }
-        }
-
-        .text-gradient {
-            background: linear-gradient(to right, #00f6ff, #00ffb3);
-            
-            -webkit-text-fill-color: transparent;
-          }
-          
-        
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background-color: var(--electric-blue);
-            opacity: 0.5;
-            animation: particle-float linear infinite;
-        }
-        
-        @keyframes particle-float {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 3px solid var(--electric-blue);
-            background-color: #0a0a0a;
-            z-index: 1;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background-color: var(--electric-blue);
-        }
-        
-        .timeline-item:last-child::after {
-            display: none;
-        }
-        
-        .skill-badge {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
-        }
-        
-        .project-card {
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.2);
-        }
-        
-        .certification-card {
-            transition: all 0.3s ease;
-            perspective: 1000px;
-        }
-        
-        .certification-card:hover {
-            transform: rotateY(10deg);
-            box-shadow: 0 5px 15px rgba(10, 252, 10, 0.3);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--neon-green);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .nav-link.active::after {
-            width: 100%;
-        }
-        
-        .counter {
-            transition: all 0.5s ease;
-        }
-        
-        .modal {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        
-        .modal.active {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-        
-        .modal-overlay {
-            transition: opacity 0.3s ease;
-        }
-        
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
-        @media (max-width: 768px) {
-            .timeline-item::before {
-                left: -20px;
-            }
-            
-            .timeline-item::after {
-                left: -10px;
-            }
-        }
-
-
-        @media (max-width: 768px) {
-            .matrix-bg::before {
-              background: rgba(0, 0, 0, 0.8);
-            }
-          }
-          
-        
-            :root {
-                --neon-green: #39ff14;
-                --neon-blue: #00f7ff;
-                --neon-purple: #bc13fe;
-                --dark-bg: #0a0a0a;
-            }
-            
-            body {
-                font-family: 'Space Grotesk', sans-serif;
-                background-color: var(--dark-bg);
-                color: white;
-                scroll-behavior: smooth;
-                overflow-x: hidden;
-            }
-            
-            .section {
-                min-height: 100vh;
-                padding: 5rem 1.5rem;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            .neon-text {
-                text-shadow: 0 0 5px var(--neon-green), 0 0 10px rgba(57, 255, 20, 0.3);
-            }
-            
-            .neon-box {
-                border: 1px solid var(--neon-blue);
-                box-shadow: 0 0 15px rgba(0, 247, 255, 0.3), inset 0 0 10px rgba(0, 247, 255, 0.1);
-                background: rgba(10, 10, 10, 0.7);
-                backdrop-filter: blur(10px);
-                transition: all 0.3s ease;
-            }
-            
-            .neon-box:hover {
-                box-shadow: 0 0 25px rgba(0, 247, 255, 0.5), inset 0 0 15px rgba(0, 247, 255, 0.2);
-            }
-            
-            .glow-effect {
-                position: relative;
-            }
-            
-            .glow-effect::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: -1;
-                margin: -5px;
-                border-radius: inherit;
-                background: linear-gradient(45deg, var(--neon-green), var(--neon-blue), var(--neon-purple));
-                background-size: 400% 400%;
-                animation: gradientGlow 6s ease infinite;
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
-            
-            .glow-effect:hover::after {
-                opacity: 0.7;
-            }
-            
-            @keyframes gradientGlow {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-            }
-            
    
-        
-            
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-            
-           
-            
-            
-            
-            
-            
-            .skill-pill {
-                border: 1px solid var(--neon-purple);
-                box-shadow: 0 0 10px rgba(188, 19, 254, 0.2);
-                transition: all 0.3s ease;
-            }
-            
-            .skill-pill:hover {
-                background: rgba(188, 19, 254, 0.1);
-                box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
-                transform: translateY(-3px);
-            }
-            
-            .nav-dot {
-                width: 12px;
-                height: 12px;
-                background: rgba(255,255,255,0.2);
-                border-radius: 50%;
-                margin: 15px 0;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            @keyframes blink {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0; }
-              }
-              
-            
-            .nav-dot.active {
-                background: var(--neon-green);
-                box-shadow: 0 0 10px var(--neon-green);
-                transform: scale(1.4);
-            }
-            
-            .scale-in {
-                animation: scaleIn 0.5s forwards;
-            }
-            
-            @keyframes scaleIn {
-                from { transform: scale(0.9); opacity: 0; }
-                to { transform: scale(1); opacity: 1; }
-            }
-            
-            .fade-in {
-                animation: fadeIn 1s forwards;
-            }
-            
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            
-            .slide-up {
-                animation: slideUp 0.8s forwards;
-            }
-            
-            @keyframes slideUp {
-                from { transform: translateY(50px); opacity: 0; }
-                to { transform: translateY(0); opacity: 1; }
-            }
-            
-            .floating {
-                animation: floating 6s ease-in-out infinite;
-            }
-            
-            @keyframes floating {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-15px); }
-                100% { transform: translateY(0px); }
-            }
-            
-            .text-gradient {
-                background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-            }
-            @media (max-width: 768px) {
-                .matrix-line {
-                  opacity: 0.1; /* or use display: none; to hide completely */
-                }
-              }
-
-           
-              
-    </style>
 </head>
 <body class="dark:bg-black -900 dark:text-white">
     <!-- Matrix Background -->
@@ -497,7 +96,7 @@
 
 
 <!-- About Section -->
-<section id="about" class="py-20 bg-black relative">
+<section id="about" class="py-20 bg- relative">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow animate-fade-in">
         About <span class="text-white">Me</span>
@@ -581,7 +180,7 @@
   
   
 <!-- Fitness Section -->
-<section id="fitness" class="py-20 bg-black -900 relative">
+<section id="fitness" class="py-20 bg- -900 relative">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-electric-blue glow">
         Fitness <span class="text-white">Journey</span>
@@ -610,7 +209,7 @@
   
     
    <!-- Experience Section -->
-<section id="experience" class="py-20 bg-black -900 relative">
+<section id="experience" class="py-20 bg- -900 relative">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
         My <span class="text-white">Journey</span>
@@ -790,82 +389,108 @@
   </section>
   
     
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-black  relative">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
-                My <span class="text-white">Projects</span>
-            </h2>
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg- relative">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
+            My <span class="text-white">Projects</span>
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+       <!-- Web Developer Agent -->
+<div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
+    <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
+        <i class="fas fa-robot text-6xl text-electric-blue"></i>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-bold text-white mb-2">Web Developer Agent</h3>
+        <p class="text-gray-300 mb-4">
+            AI-powered assistant that helps with web development tasks, offering code suggestions, debugging help, and best practice recommendations.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">AI Assistant</span>
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Web Development</span>
+            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Code Generation</span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+            <button class="project-modal-btn px-4 py-2 bg-neon-green text-black font-bold rounded hover:bg-opacity-80 transition-all flex-1" data-project="webdev-agent">
+                View Details
+            </button>
+            <a href="https://ai-agent-a7o.pages.dev" target="_blank" class="px-4 py-2 border-2 border-electric-blue text-white font-bold rounded hover:bg-electric-blue hover:bg-opacity-10 transition-all flex-1 text-center">
+                Try Free Agent
+            </a>
+        </div>
+    </div>
+</div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Mental Arithmetic App -->
-                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
-                    <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
-                        <i class="fas fa-mobile-alt text-6xl text-electric-blue"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Mental Arithmetic App</h3>
-                        <p class="text-gray-300 mb-4">
-                            Mobile application for children built in MIT App Inventor offering randomized arithmetic problems with level-based timers and progress tracking.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">MIT App Inventor</span>
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Education</span>
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Gamification</span>
-                        </div>
-                        <button class="project-modal-btn px-4 py-2 bg-neon-green text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="arithmetic">
-                            View Details
-                        </button>
-                    </div>
+            <!-- Mental Arithmetic App -->
+            <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
+                <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
+                    <i class="fas fa-mobile-alt text-6xl text-electric-blue"></i>
                 </div>
-                
-                <!-- Lantern.lol -->
-                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
-                    <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
-                        <i class="fas fa-rocket text-6xl text-neon-green"></i>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Mental Arithmetic App</h3>
+                    <p class="text-gray-300 mb-4">
+                        Mobile application for children built in MIT App Inventor offering randomized arithmetic problems with level-based timers and progress tracking.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">MIT App Inventor</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Education</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Gamification</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Lantern.lol</h3>
-                        <p class="text-gray-300 mb-4">
-                            Live SaaS product offering time-saving automation tools for creators and businesses, with web development, UI/UX, and Stripe payments.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">SaaS</span>
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Automation</span>
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Stripe</span>
-                        </div>
-                        <button class="project-modal-btn px-4 py-2 bg-electric-blue text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="lantern">
-                            View Details
-                        </button>
-                    </div>
+                    <button class="project-modal-btn px-4 py-2 bg-neon-green text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="arithmetic">
+                        View Details
+                    </button>
                 </div>
-                
-                <!-- Vehicle Import Ops Dashboard -->
-                <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
-                    <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
-                        <i class="fas fa-car text-6xl text-neon-green"></i>
+            </div>
+            
+            <!-- Lantern.lol -->
+            <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
+                <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
+                    <i class="fas fa-rocket text-6xl text-neon-green"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Lantern.lol</h3>
+                    <p class="text-gray-300 mb-4">
+                        Live SaaS product offering time-saving automation tools for creators and businesses, with web development, UI/UX, and Stripe payments.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">SaaS</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Automation</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Stripe</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Vehicle Import Ops Dashboard</h3>
-                        <p class="text-gray-300 mb-4">
-                            Internal system to clean, reconcile, and analyze vehicle data from suppliers in Japan, UAE, and Nigeria, improving buying decisions.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Data Analysis</span>
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Dashboard</span>
-                            <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Market Trends</span>
-                        </div>
-                        <button class="project-modal-btn px-4 py-2 bg-neon-green text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="vehicle">
-                            View Details
-                        </button>
+                    <button class="project-modal-btn px-4 py-2 bg-electric-blue text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="lantern">
+                        View Details
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Vehicle Import Ops Dashboard -->
+            <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700">
+                <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
+                    <i class="fas fa-car text-6xl text-neon-green"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Vehicle Import Ops Dashboard</h3>
+                    <p class="text-gray-300 mb-4">
+                        Internal system to clean, reconcile, and analyze vehicle data from suppliers in Japan, UAE, and Nigeria, improving buying decisions.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Data Analysis</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Dashboard</span>
+                        <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Market Trends</span>
                     </div>
+                    <button class="project-modal-btn px-4 py-2 bg-neon-green text-black font-bold rounded hover:bg-opacity-80 transition-all" data-project="vehicle">
+                        View Details
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-black -900 relative">
+    <section id="skills" class="py-20 bg- -900 relative">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
                 Technical <span class="text-white">Skills</span>
@@ -1012,7 +637,7 @@
     </section>
     
     <!-- Education Section -->
-    <section id="education" class="py-20 bg-black  relative">
+    <section id="education" class="py-20 bg- relative">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-neon-green glow">
                 My <span class="text-white">Education</span>
@@ -1181,7 +806,7 @@
 
 
  <!-- Footer -->
- <footer class="py-12 bg-black -900 relative">
+ <footer class="py-12 bg- -900 relative">
     <div class="container mx-auto px-5 text-center">
         <h2 class="text-2xl md:text-3xl font-bold mb-8 text-neon-green glow">
             Let's <span class="text-white">Connect</span>
@@ -1206,6 +831,53 @@
         </p>
     </div>
 </footer>
+
+
+<!-- Web Developer Agent Modal -->
+<div class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300" id="webdevAgentModal">
+    <div class="modal-overlay absolute inset-0 bg-black bg-opacity-80"></div>
+    <div class="modal-content relative bg-gray-800 rounded-lg max-w-2xl w-full mx-4 p-6 transform translate-y-10">
+        <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+        <h3 class="text-2xl font-bold text-electric-blue mb-4">Web Developer Agent</h3>
+        <div class="flex flex-col md:flex-row gap-6 mb-6">
+            <div class="md:w-1/3">
+                <div class="bg-gray-700 h-48 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-robot text-6xl text-neon-green"></i>
+                </div>
+            </div>
+            <div class="md:w-2/3">
+                <p class="text-gray-300 mb-4">
+                    An AI-powered assistant designed to help developers with various web development tasks, from code generation to debugging.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">AI Assistant</span>
+                    <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Code Generation</span>
+                    <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Debugging</span>
+                    <span class="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300">Best Practices</span>
+                </div>
+            </div>
+        </div>
+        <div class="space-y-4">
+            <h4 class="text-xl font-bold text-white">Capabilities</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Generates code snippets for common web development tasks</li>
+                <li>Provides explanations for complex programming concepts</li>
+                <li>Offers debugging assistance and error resolution</li>
+                <li>Suggests best practices and optimization techniques</li>
+                <li>Supports multiple programming languages and frameworks</li>
+                <li>Context-aware recommendations based on project requirements</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 
     
@@ -1324,347 +996,12 @@
         </div>
     </div>
     
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
-        
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            if (html.classList.contains('dark')) {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            }
-        });
-        
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Typing Effect
-        const typingText = document.getElementById('typingText');
-        const phrases = [
-            "Aspiring to dive into the tech sector",
-            "IT Student",
-            "SaaS Founder",
-            "Cybersecurity Enthusiast",
-             "Import Business Owner",
-             "Hybrid Athlete"
-        ];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let isEnd = false;
-        
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
-            
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isEnd = true;
-                setTimeout(() => {
-                    isDeleting = true;
-                }, 400);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-            }
-            
-            const speed = isDeleting ? 50 : isEnd ? 100 : 100;
-            setTimeout(type, speed);
-        }
-        
-        // Start typing effect
-        setTimeout(type, 1);
-        
-        // Matrix Background
-        const matrixBg = document.getElementById('matrixBg');
-        
-        function createMatrixLines() {
-            const width = window.innerWidth;
-            const count = Math.floor(width / 20);
-            
-            for (let i = 0; i < count; i++) {
-                const line = document.createElement('div');
-                line.classList.add('matrix-line');
-                line.style.left = `${Math.random() * 100}%`;
-                line.style.animationDuration = `${3 + Math.random() * 5}s`;
-                line.style.animationDelay = `${Math.random() * 5}s`;
-                line.style.opacity = Math.random();
-                matrixBg.appendChild(line);
-            }
-        }
-        
-        createMatrixLines();
-        
-        // Particles
-        const particlesContainer = document.getElementById('particles');
-        
-        function createParticles() {
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                const size = Math.random() * 5 + 1;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100 + 100}%`;
-                
-                const duration = Math.random() * 20 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        createParticles();
-        
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200;
-        
-        function animateCounters() {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const increment = target / speed;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-        
-        // Activate counters when scrolled into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        counters.forEach(counter => {
-            observer.observe(counter);
-        });
-        
-        // Modal Handling
-        const modalBtns = document.querySelectorAll('.project-modal-btn');
-        const modals = {
-            arithmetic: document.getElementById('arithmeticModal'),
-            lantern: document.getElementById('lanternModal'),
-            vehicle: document.getElementById('vehicleModal')
-        };
-        const modalCloses = document.querySelectorAll('.modal-close');
-        
-        modalBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const project = btn.getAttribute('data-project');
-                const modal = modals[project];
-                
-                modal.classList.add('active');
-                modal.querySelector('.modal-overlay').classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        
-        modalCloses.forEach(close => {
-            close.addEventListener('click', () => {
-                const modal = close.closest('.modal');
-                modal.classList.remove('active');
-                modal.querySelector('.modal-overlay').classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-        
-        // Close modal when clicking outside
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) {
-                    const modal = overlay.closest('.modal');
-                    modal.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-        
-        // Navigation active state
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= sectionTop - 300) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-            document.addEventListener("DOMContentLoaded", function () {
-              const typed = new Typed("#typed-name", {
-                strings: ["Hello, I'm <span class='text-white'>Zaccaria Harda</span>"],
-                typeSpeed: 90,
-                backSpeed: 50,
-                backDelay: 3000,
-                loop: false,
-                showCursor: true,
-                cursorChar: "|",
-                onComplete: function (self) {
-                  setTimeout(() => {
-                    self.cursor.style.display = 'none';
-                  }, 500); // Optional delay before hiding cursor
-                }
-              });
-            });
-          
-            document.addEventListener("DOMContentLoaded", async function () {
-                const terminal = document.getElementById("terminal-output");
-            
-                // Function to type the text with a delay
-                const typeLine = async (text, delay = 40) => {
-                  return new Promise((resolve) => {
-                    let i = 0;
-                    const line = document.createElement("div");
-                    terminal.appendChild(line);
-            
-                    const typeChar = () => {
-                      if (i < text.length) {
-                        line.innerHTML += text.charAt(i++);
-                        setTimeout(typeChar, delay);
-                      } else {
-                        resolve();
-                      }
-                    };
-                    typeChar();
-                  });
-                };
-            
-                // Function to get time-based greeting
-                const getTimeGreeting = () => {
-                  const hour = new Date().getHours();
-                  if (hour < 12) return "Good morning";
-                  if (hour < 18) return "Good afternoon";
-                  return "Good evening";
-                };
-
-
-                
-            
-                // Function to get user's location using IP
-                const getLocation = async () => {
-                  try {
-                    const res = await fetch("https://ipapi.co/json");
-                    const data = await res.json();
-                    return data.city || data.country_name || "somewhere";
-                  } catch {
-                    return "somewhere";
-                  }
-                };
-            
-                // Fetch data for greeting and location
-                const greeting = getTimeGreeting();
-                const location = await getLocation();
-            
-                // Type the initial shell commands and responses
-                await typeLine("> whoami");
-                await typeLine("Zaccaria Harda");
-                await typeLine("> greet");
-                await typeLine(`${greeting} from ${location}! 👋`);
-                await typeLine("> skills --list");
-                await typeLine("Cybersecurity, AI, SaaS, Automation");
-            
-                // Add a blinking cursor after typing completes
-                const cursor = document.createElement("div");
-                cursor.innerHTML = ">";
-                const blink = document.createElement("span");
-                blink.textContent = "|";
-                blink.style.marginLeft = "4px";
-                blink.style.animation = "blink 1s step-end infinite";
-                blink.style.color = "#22c55e";
-                cursor.appendChild(blink);
-                terminal.appendChild(cursor);
-              });
-              
-              
-             // Show location badge when scrolled into view
-const badgeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.remove('opacity-0', 'translate-y-4');
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-            badgeObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-const locationBadge = document.querySelector('.location-badge');
-if (locationBadge) {
-    badgeObserver.observe(locationBadge);
-}
-              
-              
-              
-        
-           
-              </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="script.js"></script>
 
 
           
